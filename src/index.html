@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Space Debris</title>
+
+    <!-- Favicons for browsers -->
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+
+    <!-- Icons for showing on the home screens of Android and iOS devices -->
+    <link href="http://levi.codes/space-debris/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="http://levi.codes//apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+    <link href="http://levi.codes//apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+    <link href="http://levi.codes/space-debris/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+
+    <!--<link href="styles/lib.css"-->
+    <!--rel="stylesheet">-->
+    <link href="styles/main.css" rel="stylesheet">
+
+    <script defer src="scripts/lib.js"></script>
+    <script defer src="scripts/space-debris.js"></script>
+    <!--<script defer src="scripts/dynamics-example.js"></script>-->
+  </head>
+
+  <body>
+    <!-- The gulp-index.html task will inject the SVG store here -->
+    <!-- inject:svg-store:svg -->
+    <!-- endinject -->
+
+    <canvas id="game-area"></canvas>
+
+    <div class="overlays">
+      <div class="score"></div>
+
+      <div class="health">
+        <div class="current"></div>
+        <div class="capacity"></div>
+      </div>
+
+      <div class="toast"></div>
+
+      <div class="pause-screen">
+        <div class="pause-menu">
+          <h2 class="title">Paused</h2>
+          
+          <div class="pause-menu-content"></div>
+          
+          <button class="play">Resume</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

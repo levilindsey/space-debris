@@ -1,0 +1,94 @@
+{
+  "name": "space-debris",
+  "version": "0.0.0",
+  "description": "Fly through starscapes destroying space debris!",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/levilindsey/space-debris"
+  },
+  "author": {
+    "name": "Levi Lindsey",
+    "email": "levi@levi.codes",
+    "url": "https://github.com/levilindsey"
+  },
+  "bugs": {
+    "url": "http://github.com/levilindsey/space-debris/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "bower": "^1.8.0",
+    "browserify": "^13.3.0",
+    "connect-livereload": "^0.6.0",
+    "del": "^2.2.2",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-cache": "^0.4.6",
+    "gulp-concat": "^2.6.1",
+    "gulp-flatten": "^0.3.1",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-inject": "^4.2.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.1.1",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-template": "^4.0.0",
+    "gulp-uglify": "^1.5.4",
+    "gulp-webserver": "^0.9.1",
+    "jasmine-core": "^2.6.3",
+    "jscs": "^3.0.7",
+    "karma": "^1.7.0",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "protractor": "^3.3.0",
+    "tiny-lr": "^0.2.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
+  },
+  "engines": {
+    "node": ">=6.10.2"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "start": "gulp",
+    "test": "gulp test"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  },
+  "jscsConfig": {
+    "preset": "google",
+    "excludeFiles": [
+      ".idea",
+      ".git",
+      ".sass-cache",
+      "bower_components",
+      "dist",
+      "docs",
+      "node_modules",
+      "res"
+    ],
+    "maximumLineLength": 100,
+    "requireMultiLineTernary": null
+  }
+}

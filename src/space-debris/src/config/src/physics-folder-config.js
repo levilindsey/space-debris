@@ -1,0 +1,14 @@
+import {physicsConfig} from './physics-config';
+
+/**
+ * This module configures the physics dat.GUI menu folder.
+ */
+
+const physicsFolderConfig = {
+  label: 'Physics Engine',
+  config: physicsConfig,
+  isOpen: false,
+  onChangeListeners: {}
+};
+
+export {physicsFolderConfig};
