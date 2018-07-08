@@ -5,7 +5,7 @@
 _See this in use at [levi.codes/dynamics-example][demo]!_
 
 This project includes a 3D WebGL-based [graphics framework][grafx], and 3D [physics engine][physx], 
-and miscellaneous other features that commonly needed when creating a game.
+and miscellaneous other features that are commonly needed when creating a game.
 
 TODO: Add some sort of getting set up and understanding the code docs.
 
@@ -14,10 +14,14 @@ TODO: Add some sort of getting set up and understanding the code docs.
 TODO
 - A general system for interacting with the dat.GUI library for dynamically adjusting system
   parameters.
+- A ton of cool features in supporting libraries--notably:
+  - [grafx][grafx]: A 3D graphics framework for WebGL.
+  - [physx][physx]: A physics engine with 3D rigid-body dynamics and collision detection (with
+    impulse-based resolution).
 
 ## Acknowledgements / Technology Stack
 
-The technologies used in this application include:
+The technologies used in this library include:
 
 - [ES2015][es2015]
 - [WebGL][webgl]

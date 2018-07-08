@@ -1,20 +1,22 @@
 # physx
 
-#### 3D rigid-body dynamics and collision detection with impulse-based resolution.
+#### A physics engine with 3D rigid-body dynamics and collision detection (with impulse-based resolution).
 
 _See this in use at [levi.codes/dynamics-example][demo]!_
 
 This framework only defines physics logic. If you also need a 3D rendering framework, checkout 
-[grafx][grafx], or [gamex][gamex], which ties the physx and [grafx][grafx] frameworks 
+[grafx][grafx]. Or checkout [gamex][gamex], a game engine that ties the grafx and physx frameworks
 together.
 
 TODO: Add some sort of getting set up and understanding the code docs.
 
 ## Notable Features
 
-- Includes collision detection with impulse-based resolution.
-- Decouples the physics simulation and animation rendering time steps, and uses a fixed timestep
-for the physics loop. This provides numerical stability and precise reproducibility.
+- Includes [collision detection][collision-detection] with [impulse-based 
+  resolution][collision-resolution].
+- [Decouples the physics simulation and animation rendering time steps][stable-time-steps], and uses
+  a fixed timestep for the physics loop. This provides numerical stability and precise
+  reproducibility.
 - Suppresses linear and angular momenta below a certain threshold.
 
 The engine consists primarily of a collection of individual physics jobs and an update loop. This 
@@ -57,7 +59,7 @@ The collision and geometry logic is tested (with [Karma][karma] and [Jasmine][ja
 
 ## Acknowledgements / Technology Stack
 
-The technologies used in this application include:
+The technologies used in this library include:
 
 - [ES2015][es2015]
 - [WebGL][webgl]
@@ -72,7 +74,7 @@ The technologies used in this application include:
 - Numerous other packages that are available via [Bower][bower] (these are listed within the
   [`bower.json`](./bower.json) file)
 
-Many online resources influenced the design of this application. Some of these include:
+Many online resources influenced the design of this library. Some of these include:
 
 - [gafferongames.com][gafferongames]
 - [geometrictools.com][geometrictools]
@@ -112,3 +114,7 @@ MIT
 [geometrictools]: http://geometrictools.com
 [mathgeolib]: http://clb.demon.fi/MathGeoLib/nightly
 [euclideanspace]: http://euclideanspace.com
+
+[collision-detection]: https://en.wikipedia.org/wiki/Collision_detection
+[collision-resolution]: https://en.wikipedia.org/wiki/Collision_response#Impulse-based_contact_model
+[stable-time-steps]: https://gafferongames.com/post/fix_your_timestep/

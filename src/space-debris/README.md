@@ -4,7 +4,7 @@
 
 _See this running at [levi.codes/space-debris][demo]!_
 
-This game is built on [gamex][gamex], a custom 3D WebGL-based game engine.
+To learn about the 3D WebGL-based game engine this is built on, checkout [gamex][gamex].
 
 TODO: Add some sort of getting set up and understanding the code docs.
 
@@ -12,12 +12,16 @@ TODO: Add some sort of getting set up and understanding the code docs.
 
 - An algorithm for calculating intercept velocity of B given the position and velocity of A and the
   position and speed of B.
-- Coordination between multiple WebGL programs.
+- Coordination between multiple [WebGL programs][webgl-program].
 - Procedurally generated asteroid shapes.
 - A procedurally generated starscape.
 - A user-controllable ship flying through space and shooting asteroids!
-- Rendering lat-long spherical textures over tessellated icosahera.
-- A post-processing bloom shader.
+- Rendering lat-long spherical textures over [tessellated][tesselation] icosahera.
+- A post-processing [bloom][bloom] shader.
+- A ton of cool features in supporting libraries--notably:
+  - [grafx][grafx]: A 3D graphics framework for WebGL.
+  - [physx][physx]: A physics engine with 3D rigid-body dynamics and collision detection (with
+    impulse-based resolution).
 
 ## Acknowledgements / Technology Stack
 
@@ -49,6 +53,8 @@ MIT
 [demo]: http://levi.codes/space-debris
 
 [gamex]: https://github.com/levilindsey/gamex
+[grafx]: https://github.com/levilindsey/grafx
+[physx]: https://github.com/levilindsey/physx
 [lsl-gulp-tasks]: https://github.com/levilindsey/lsl-gulp-tasks
 
 [es2015]: http://www.ecma-international.org/ecma-262/6.0/
@@ -65,3 +71,7 @@ MIT
 
 [jpl]: http://www.jpl.nasa.gov/spaceimages/search_grid.php?sort=mission&q=voyager
 [webtreats]: http://webtreats.mysitemyway.com/8-tileable-metal-textures/
+
+[webgl-program]: https://developer.mozilla.org/en-US/docs/Web/API/WebGLProgram
+[tesselation]: https://en.wikipedia.org/wiki/Tessellation
+[bloom]: https://en.wikipedia.org/wiki/Bloom_(shader_effect)

@@ -565,7 +565,10 @@ function expandVertexIndicesAroundLongitudeSeam(oldVertexPositions, oldVertexInd
   // const newVertexPositions = [];
   // const newVertexIndices = [];
   //
-  // ****// TODO: loop over triangles, use _getTextureCoordinatesOfLatLongPosition on each vertex, check if two vertices in a triangle span the seam; to check the span, just check if both are within a distance from the seam, but on opposite ends;
+  // ****
+  // // TODO: loop over triangles, use _getTextureCoordinatesOfLatLongPosition on each vertex,
+  // // check if two vertices in a triangle span the seam; to check the span, just check if both are
+  // // within a distance from the seam, but on opposite ends;
   //
   // return {
   //   vertexPositions: newVertexPositions,

@@ -4,11 +4,26 @@
 
 _See this running at [levi.codes/dynamics-example][demo]!_
 
+This application demonstrates many of the features of the [gamex][gamex] game engine, and notably
+the underlying [physx][physx] physics engine.
+
 TODO: Add some sort of getting set up and understanding the code docs.
 
 ## Notable Features
 
-TODO
+- Includes [collision detection][collision-detection] with [impulse-based 
+  resolution][collision-resolution].
+- [Decouples the physics simulation and animation rendering time steps][stable-time-steps], and uses
+  a fixed timestep for the physics loop. This provides numerical stability and precise
+  reproducibility.
+- Suppresses linear and angular momenta below a certain threshold.
+
+The engine consists primarily of a collection of individual physics jobs and an update loop. This 
+update loop is in turn controlled by the animation loop. However, whereas the animation loop renders
+each job once per frame loop--regardless of how much time actually elapsed since the previous
+frame--the physics loop updates its jobs at a constant rate. To reconcile these frame rates, the
+physics loop runs as many times as is needed in order to catch up to the time of the current
+animation frame. The physics frame rate should be much higher than the animation frame rate.
 
 ## Acknowledgements / Technology Stack
 

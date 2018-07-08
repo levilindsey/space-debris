@@ -5,7 +5,7 @@
 _See this in use at [levi.codes/space-debris][demo]!_
 
 This framework only defines graphics logic. If you also need a 3D physics engine, checkout 
-[physx][physx], or [gamex][gamex], which ties the grafx and [physx][physx] frameworks 
+[physx][physx]. Or checkout [gamex][gamex], a game engine that ties the grafx and physx frameworks
 together.
 
 TODO: Add some sort of getting set up and understanding the code docs.
@@ -14,7 +14,7 @@ TODO: Add some sort of getting set up and understanding the code docs.
 
 - **TODO: Copy some notable feature explanations to the docs in the corresponding code. And to understanding-the-code.md?**
 - A system for defining 3D shapes, models, and controllers.
-- A system for configuring and drawing multiple simultaneous WebGL programs.
+- A system for configuring and drawing multiple simultaneous [WebGL programs][webgl-program].
 - A system for loading and compiling WebGL shaders and programs.
 - Support for both per-model and post-processing shaders. 
 - A system for loading textures.
@@ -24,7 +24,8 @@ TODO: Add some sort of getting set up and understanding the code docs.
   and vertex indices configurations.
 - Algorithms for converting to and from a vertex indexing array.
 - An algorithm for polygon subdivision.
-  - This is used for tesselating all faces of a polygon into a parameterized number of triangles.
+  - This is used for [tesselating][tesselation] all faces of a polygon into a parameterized number
+    of triangles.
   - All of the resulting vertices can then be pushed out to a given radius in order to render a
     smoother sphere.
 - An algorithm for mapping spherical lat-long textures onto an icosahedron.
@@ -33,7 +34,7 @@ TODO: Add some sort of getting set up and understanding the code docs.
 
 ## Acknowledgements / Technology Stack
 
-The technologies used in this application include:
+The technologies used in this library include:
 
 - [ES2015][es2015]
 - [WebGL][webgl]
@@ -48,7 +49,7 @@ The technologies used in this application include:
 - Numerous other packages that are available via [Bower][bower] (these are listed within the
   [`bower.json`](./bower.json) file)
 
-Many online resources influenced the design of this application. Some of these include:
+Many online resources influenced the design of this library. Some of these include:
 
 - [MDN tutorial][mdn-tutorial]
 - [webglfundamentals.org][webglfundamentals]
@@ -78,3 +79,6 @@ MIT
 [mdn-tutorial]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL
 [camera-example]: http://www.dhpoware.com/demos/glCamera3.html
 [webglfundamentals]: http://webglfundamentals.org/
+
+[webgl-program]: https://developer.mozilla.org/en-US/docs/Web/API/WebGLProgram
+[tesselation]: https://en.wikipedia.org/wiki/Tessellation

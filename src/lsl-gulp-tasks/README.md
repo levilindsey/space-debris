@@ -1,6 +1,6 @@
 # lsl-gulp-tasks
 
-#### A set of common gulp tasks
+#### A set of common gulp tasks for frontend development
 
 _For an example using these tasks, check out
 [space-debris][space-debris]._
