@@ -39,6 +39,8 @@ class ModelController extends PersistentAnimationJob {
     this._drawFrameHandler = () => this.draw();
     this._programVariablesConfig = null;
 
+    this.scale = vec3.fromValues(1, 1, 1);
+
     this._setUpTexture(params.texturePath);
     this._setUpProgramWrapper(params.programWrapperId);
 

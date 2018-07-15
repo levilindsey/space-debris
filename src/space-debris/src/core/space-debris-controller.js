@@ -15,8 +15,6 @@ class SpaceDebrisController extends GameController {
   constructor() {
     super();
 
-    this.isGameOver = true;
-
     this._pauseScreen = document.querySelector('.pause-screen');
     this._title = document.querySelector('.title');
     this._playButton = document.querySelector('button.play');
@@ -55,10 +53,11 @@ class SpaceDebrisController extends GameController {
     this._scene.destroyShip();
     this.isGameOver = true;
     this._title.innerHTML = 'Game over';
+    this._pauseScreen.style.display = 'block';
   }
 
   togglePause() {
-    if (animator.isPaused) {
+    if (this.isPaused) {
       this.unpause();
     }
     else {

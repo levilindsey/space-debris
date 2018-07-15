@@ -14,6 +14,8 @@ class GameController extends GrafxController {
   constructor() {
     super();
 
+    this.isGameOver = true;
+
     this._inputCtrl = null;
 
     configController.initialize();
@@ -61,6 +63,10 @@ class GameController extends GrafxController {
 
   unpause() {
     animator.unpause();
+  }
+
+  get isPaused() {
+    animator.isPaused;
   }
 
   /**

@@ -9,10 +9,11 @@ import {_util} from '../util';
  */
 class PhysicsJob {
   /**
-   * @param {Array.<ForceApplier>} forceAppliers
+   * @param {Array.<ForceApplier>} [forceAppliers]
    * @param {PhysicsState} [state]
    */
   constructor(forceAppliers, state) {
+    forceAppliers = forceAppliers || [];
     state = state || new PhysicsState();
 
     this.startTime = null;

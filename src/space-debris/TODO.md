@@ -2,33 +2,6 @@ FIXME: MAIN TODO LIST:
 
 
 
-- Go back through READMEs and make sure all significant aspects are well documented.
-
-
-
-- Move to a new space-debris repo.
-
-
-
-- Get approval to release my projects.
-
-
-
-- Separate out the sub-projects
-  - Create a different repo for each
-  - Create a new repo just for the gulp tasks that I use
-    - lsl-gulp-tasks
-    - Duplicate docs and top-level files in each repo
-    - Do not duplicate the gulp commands
-  - Create a different NPM package for each (and for the gulp commands)
-  - Update the import statements to use the globally-available import paths
-  - Update the package.json files and the gulpfile.babel.js files to reference the new gulp package
-    in node_modules/
-
-
-
-- Handle end of game.
-  - Finish ShipDestroyedCameraTarget.
 - Handle start of new game
 
 
@@ -60,6 +33,21 @@ FIXME: MAIN TODO LIST:
     - Adding post-processing shaders.
     - Switching primary shaders.
     - Selectively changing for the different model controllers.
+
+
+
+- Go back through READMEs and document remaining details.
+
+- Separate out the sub-projects
+  - Create a different repo for each
+  - Create a new repo just for the gulp tasks that I use
+    - lsl-gulp-tasks
+    - Duplicate docs and top-level files in each repo
+    - Do not duplicate the gulp commands
+  - Create a different NPM package for each (and for the gulp commands)
+  - Update the import statements to use the globally-available import paths
+  - Update the package.json files and the gulpfile.babel.js files to reference the new gulp package
+    in node_modules/
 
 
 

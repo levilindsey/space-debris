@@ -26,8 +26,9 @@ class SpringFollowCamera extends FollowCamera {
    */
   constructor(cameraTarget, followCameraParams, cameraParams, oldCamera) {
     super(cameraTarget, followCameraParams, cameraParams, oldCamera);
-    this._velocity = vec3.create();
-    this._acceleration = vec3.create();
+    // These could have been set in _matchOldCamera.
+    this._velocity = this._velocity || vec3.create();
+    this._acceleration = this._acceleration || vec3.create();
   }
 
   reset() {
@@ -113,6 +114,8 @@ class SpringFollowCamera extends FollowCamera {
   _matchOldCamera(oldCamera) {
     super._matchOldCamera(oldCamera);
     if (oldCamera instanceof SpringFollowCamera) {
+      this._velocity = this._velocity || vec3.create();
+      this._acceleration = this._acceleration || vec3.create();
       vec3.copy(this._velocity, oldCamera._velocity);
       vec3.copy(this._acceleration, oldCamera._acceleration);
     }

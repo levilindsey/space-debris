@@ -1,4 +1,4 @@
-import {isInDevMode, StandardModelController, vec3ToString} from '../../../grafx';
+import {isInDevMode, ModelController, StandardModelController, vec3ToString} from '../../../grafx';
 import {PhysicsJob, PhysicsState} from '../../../physx';
 
 /**
@@ -11,20 +11,29 @@ import {PhysicsJob, PhysicsState} from '../../../physx';
  */
 class PhysicsModelController {
   /**
-   * @param {ModelControllerConfig} modelControllerParams
-   * @param {DynamicsConfig} dynamicsParams
-   * @param {RenderableShapeConfig} shapeParams
-   * @param {Array.<ForceApplier>} forceAppliers
+   * @param {ModelController|ModelControllerConfig} modelControllerOrParams
+   * @param {PhysicsJob|DynamicsConfig} physicsJobOrDynamicsParams
+   * @param {RenderableShapeConfig} [shapeParams]
+   * @param {Array.<ForceApplier>} [forceAppliers]
    */
-  constructor(modelControllerParams, dynamicsParams, shapeParams, forceAppliers) {
+  constructor(modelControllerOrParams, physicsJobOrDynamicsParams, shapeParams, forceAppliers) {
     // PhysicsModelController is an abstract class. It should not be instantiated directly.
     if (new.target === PhysicsModelController) {
       throw new TypeError('Cannot construct PhysicsModelController instances directly');
     }
 
-    this._dynamicsParams = dynamicsParams;
-    this.modelCtrl = new StandardModelController(modelControllerParams, shapeParams);
-    this.physicsJob = this._createPhysicsJob(shapeParams, forceAppliers);
+    this.modelCtrl = modelControllerOrParams instanceof ModelController
+        ? modelControllerOrParams
+        : new StandardModelController(modelControllerOrParams, shapeParams);
+
+    if (physicsJobOrDynamicsParams instanceof PhysicsJob) {
+      this.physicsJob = physicsJobOrDynamicsParams;
+    } else {
+      const state = new PhysicsState(physicsJobOrDynamicsParams);
+      this.physicsJob = new PhysicsJob(forceAppliers, state);
+    }
+
+    this._originalPosition = vec3.clone(this.physicsJob.currentState.position);
 
     this._patchModelController({
       /**
@@ -64,21 +73,11 @@ class PhysicsModelController {
   }
 
   /**
-   * @param {RenderableShapeConfig} shapeParams
-   * @param {Array.<ForceApplier>} forceAppliers
-   * @protected
-   */
-  _createPhysicsJob(shapeParams, forceAppliers) {
-    const state = new PhysicsState(this._dynamicsParams);
-    return new PhysicsJob(forceAppliers, state);
-  }
-
-  /**
    * Registers this controller's PhysicsJob(s) with the physics engine.
    */
   reset() {
     this.modelCtrl.reset();
-    this.physicsJob.position = this._dynamicsParams.position;
+    this.physicsJob.position = this._originalPosition;
     this.physicsJob.finish();
     this.physicsJob.start();
   }

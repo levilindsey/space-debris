@@ -4,6 +4,8 @@
 
 _See this running at [levi.codes/space-debris][demo]!_
 
+This is a WebGL-based space-flight simulation video game. 
+
 To learn about the 3D WebGL-based game engine this is built on, checkout [gamex][gamex].
 
 TODO: Add some sort of getting set up and understanding the code docs.

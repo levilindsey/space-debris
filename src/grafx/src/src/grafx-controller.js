@@ -86,9 +86,7 @@ class GrafxController extends PersistentAnimationJob {
    * @param {DOMHighResTimeStamp} deltaTime
    */
   update(currentTime, deltaTime) {
-    this._scene.update(currentTime, deltaTime);
-    this._scene.updateTransforms();
-    this._scene.updateChildren(currentTime, deltaTime);
+    this._scene.updateSelfAndChildren(currentTime, deltaTime);
   }
 
   /**

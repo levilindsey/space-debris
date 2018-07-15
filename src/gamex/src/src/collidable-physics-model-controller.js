@@ -1,5 +1,5 @@
 import {PhysicsModelController} from './physics-model-controller';
-import {CollidablePhysicsJob, PhysicsState} from '../../../physx';
+import {CollidablePhysicsJob, PhysicsJob, PhysicsState} from '../../../physx';
 
 /**
  * This class represents a collidable physics-based model-controller.
@@ -8,29 +8,26 @@ import {CollidablePhysicsJob, PhysicsState} from '../../../physx';
  */
 class CollidablePhysicsModelController extends PhysicsModelController {
   /**
-   * @param {ModelControllerConfig} modelControllerParams
-   * @param {DynamicsConfig} dynamicsParams
-   * @param {RenderableShapeConfig} shapeParams
+   * @param {ModelController|ModelControllerConfig} modelControllerOrParams
+   * @param {CollidablePhysicsJob|DynamicsConfig} physicsJobOrDynamicsParams
+   * @param {RenderableShapeConfig} [shapeParams]
    * @param {Array.<ForceApplier>} forceAppliers
    */
-  constructor(modelControllerParams, dynamicsParams, shapeParams, forceAppliers) {
-    super(modelControllerParams, dynamicsParams, shapeParams, forceAppliers);
+  constructor(modelControllerOrParams, physicsJobOrDynamicsParams, shapeParams, forceAppliers) {
+    super(modelControllerOrParams, physicsJobOrDynamicsParams, shapeParams, forceAppliers);
+
+    if (physicsJobOrDynamicsParams instanceof CollidablePhysicsJob) {
+      this.physicsJob = physicsJobOrDynamicsParams;
+    } else {
+      const state = new PhysicsState(physicsJobOrDynamicsParams);
+      this.physicsJob = new CollidablePhysicsJob(shapeParams, state, forceAppliers, this,
+          collision => this.handleCollision(collision));
+    }
 
     // CollidablePhysicsModelController is an abstract class. It should not be instantiated directly.
     if (new.target === CollidablePhysicsModelController) {
       throw new TypeError('Cannot construct CollidablePhysicsModelController instances directly');
     }
-  }
-
-  /**
-   * @param {RenderableAndCollidableShapeConfig} shapeParams
-   * @param {Array.<ForceApplier>} forceAppliers
-   * @protected
-   */
-  _createPhysicsJob(shapeParams, forceAppliers) {
-    const state = new PhysicsState(this._dynamicsParams);
-    return new CollidablePhysicsJob(shapeParams, state, forceAppliers, this,
-        collision => this.handleCollision(collision));
   }
 
   /**

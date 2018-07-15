@@ -53,7 +53,7 @@ import {
 }
 from '../../ufo';
 
-// import { ShipDestroyedCameraTarget } from './ship-destroyed-camera-target';
+import { ShipDestroyedCameraTarget } from './ship-destroyed-camera-target';
 
 /**
  * This class handles the overall scene.
@@ -78,6 +78,8 @@ class SceneImpl extends GameScene {
     this._starsCtrl = null;
     this._ufosCtrl = null;
     this._chunkCtrl = null;
+    // This is either _shipCtrl or _shipDestroyedCameraTarget depending on whether the game is over.
+    this._shipProxy = null;
     this._shipDestroyedCameraTarget = null;
     this._camera = null;
     this._chunkListeners = [];
@@ -89,12 +91,9 @@ class SceneImpl extends GameScene {
   }
 
   reset() {
-    if (this._shipDestroyedCameraTarget) {
-      this._shipDestroyedCameraTarget.finish();
-      this._shipDestroyedCameraTarget = null;
-    }
-
     super.reset();
+
+    this._shipDestroyedCameraTarget = null;
   }
 
   /**
@@ -104,18 +103,19 @@ class SceneImpl extends GameScene {
   updateChildren(currentTime, deltaTime) {
     super.updateChildren(currentTime, deltaTime);
     // The scene position follows the ship position.
-    this.centerOfVolume = this._shipCtrl.position;
+    this.centerOfVolume = this._shipProxy.position;
     this._chunkCtrl.update(this.centerOfVolume);
   }
 
   destroyShip() {
     // Update the camera target, since we're removing the ship.
-    // FIXME: LEFT OFF HERE:
-    // this._shipDestroyedCameraTarget = new ShipDestroyedCameraTarget(this._shipCtrl);
-    // this._shipDestroyedCameraTarget.start();
-    this._createCamera();
-
-    this._onModelControllerDestroyed(this._shipCtrl);
+    this._shipDestroyedCameraTarget = new ShipDestroyedCameraTarget(this._shipCtrl);
+    this._startModelController(this._shipDestroyedCameraTarget).then(() => {
+      this._shipProxy = this._shipDestroyedCameraTarget;
+      this._createCamera();
+      this._onModelControllerDestroyed(this._shipCtrl);
+      this._shipCtrl = null;
+    });
 
     // TODO: Trigger explosion animation.
   }
@@ -127,8 +127,8 @@ class SceneImpl extends GameScene {
   _createModelControllers(inputCtrl) {
     const getWorldTransform = () => this.worldTransform;
     const getCameraPosition = () => this._camera.position;
-    const getShipPosition = () => this._shipCtrl.position;
-    const getShipVelocity = () => this._shipCtrl.velocity;
+    const getShipPosition = () => this._shipProxy.position;
+    const getShipVelocity = () => this._shipProxy.velocity;
     const modelControllerParams = {
       gl: this._gl,
       getViewMatrix: this._getViewMatrix,
@@ -143,6 +143,7 @@ class SceneImpl extends GameScene {
     this._shipCtrl =
       new ShipController(shallowCopy(modelControllerParams), inputCtrl, this._gameCtrl.healthCtrl,
         this._torpedoesCtrl);
+    this._shipProxy = this._shipCtrl;
     this._starsCtrl = new StarsController(shallowCopy(modelControllerParams), getCameraPosition);
     // TODO
     // this._ufosCtrl = new UfosController(modelControllerParams, getShipPosition, getShipVelocity,
@@ -212,21 +213,19 @@ class SceneImpl extends GameScene {
    * @private
    */
   _createCameraTarget() {
-    if (this._shipDestroyedCameraTarget) return this._shipDestroyedCameraTarget;
-
-    const shipCtrl = this._shipCtrl;
+    const shipProxy = this._shipProxy;
 
     // Create a proxy object to translate "position" to "renderPosition" and "orientation" to
     // "renderOrientation".
     return {
       get position() {
-        return shipCtrl.renderPosition;
+        return shipProxy.renderPosition;
       },
       get orientation() {
-        return shipCtrl.renderOrientation;
+        return shipProxy.renderOrientation;
       },
       get worldTransform() {
-        return shipCtrl.worldTransform;
+        return shipProxy.worldTransform;
       },
     };
   }
