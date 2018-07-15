@@ -144,7 +144,7 @@ $min-menu-margin: 20px;
 .pause-menu {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   width: 600px;
   max-width: calc(100% - #{$min-menu-margin});
   height: 700px;
@@ -155,11 +155,36 @@ $min-menu-margin: 20px;
   background-color: color(grey-1);
 
   .title {
-    flex: 0 0 auto; // FIXME
+    flex: 0 0 auto;
   }
 
   .pause-menu-content {
-    flex: 1 1 0; // FIXME
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 28px;
+    line-height: 28px;
+
+    dl > div {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+
+      dt, dd {
+        margin: 0 20px;
+        max-width: 200px;
+        width: 50%;
+      }
+
+      dt {
+        text-align: end;
+      }
+
+      dd {
+        text-align: start;
+      }
+    }
   }
 
   button.play {

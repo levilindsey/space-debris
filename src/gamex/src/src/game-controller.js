@@ -15,10 +15,7 @@ class GameController extends GrafxController {
     super();
 
     this.isGameOver = true;
-
     this._inputCtrl = null;
-
-    configController.initialize();
   }
 
   /**
@@ -35,6 +32,7 @@ class GameController extends GrafxController {
   initialize(canvas, programConfigs, texturePaths, SceneImpl) {
     this._canvas = canvas;
 
+    configController.initialize();
     this._setUpInput();
 
     return super.initialize(canvas, programConfigs, texturePaths, SceneImpl);
@@ -65,8 +63,11 @@ class GameController extends GrafxController {
     animator.unpause();
   }
 
+  /**
+   * @returns {boolean}
+   */
   get isPaused() {
-    animator.isPaused;
+    return animator.isPaused;
   }
 
   /**

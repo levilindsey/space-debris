@@ -253,6 +253,11 @@ FIXME: MAIN TODO LIST:
 
 
 
+- Fix `reset` methods across app. Right now, you can't really call reset to return the app to its
+  starting state. Instead, we have to recreate everything. This shouldn't be the case.
+
+
+
 - Add difraction spikes to stars?
 
 

@@ -1,9 +1,11 @@
 import {
+  applyAngularDrag,
   InvisibleModelController,
   PhysicsJob,
   PhysicsModelController,
   PhysicsState,
 } from '../../../../../gamex';
+import {physicsConfig} from '../../../config';
 
 /**
  * This controller renders nothing but does continue to update its state, so that it can serve as a
@@ -31,7 +33,11 @@ class ShipDestroyedCameraTarget extends PhysicsModelController {
     physicsJob.previousState = new PhysicsState(shipCtrl.physicsJob.previousState);
     physicsJob.renderState = new PhysicsState(shipCtrl.physicsJob.renderState);
 
-    super(modelCtrl, physicsJob);
+    const forceAppliers = [
+      applyAngularDrag.bind(null, physicsConfig),
+    ];
+
+    super(modelCtrl, physicsJob, undefined, forceAppliers);
   }
 }
 

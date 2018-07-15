@@ -55,6 +55,7 @@ class GrafxController extends PersistentAnimationJob {
   destroy() {}
 
   reset() {
+    // FIXME: Will it be easier to replace this with initialize?
     this._scene.reset();
   }
 

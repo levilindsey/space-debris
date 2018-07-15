@@ -114,7 +114,6 @@ class SceneImpl extends GameScene {
       this._shipProxy = this._shipDestroyedCameraTarget;
       this._createCamera();
       this._onModelControllerDestroyed(this._shipCtrl);
-      this._shipCtrl = null;
     });
 
     // TODO: Trigger explosion animation.

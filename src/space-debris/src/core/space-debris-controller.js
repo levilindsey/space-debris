@@ -1,5 +1,6 @@
 import {
   animator,
+  configController,
   GameController,
 }
 from '../../../gamex';
@@ -20,11 +21,8 @@ class SpaceDebrisController extends GameController {
     this._playButton = document.querySelector('button.play');
     this._toastPanel = document.querySelector('.toast');
 
-    const healthMeter = document.querySelector('.health .current');
-    const scorePanel = document.querySelector('.score');
-
-    this.healthCtrl = new HealthController(healthMeter, this.endGame.bind(this));
-    this.scoreCtrl = new ScoreController(scorePanel);
+    this.healthCtrl = null;
+    this.scoreCtrl = null;
 
     this._setElementListeners();
   }
@@ -39,6 +37,12 @@ class SpaceDebrisController extends GameController {
    * @returns {Promise}
    */
   initialize(canvas, programConfigs, texturePaths, SceneImpl) {
+    const healthMeter = document.querySelector('.health .current');
+    const scorePanel = document.querySelector('.score');
+
+    this.healthCtrl = new HealthController(healthMeter, this.endGame.bind(this));
+    this.scoreCtrl = new ScoreController(scorePanel);
+
     return super.initialize(canvas, programConfigs, texturePaths, SceneImpl)
       .then(() => this._setPauseKeyListeners());
   }
@@ -52,27 +56,42 @@ class SpaceDebrisController extends GameController {
   endGame() {
     this._scene.destroyShip();
     this.isGameOver = true;
+    this._updatePauseMenu();
     this._title.innerHTML = 'Game over';
+    this._playButton.innerHTML = 'Play again';
     this._pauseScreen.style.display = 'block';
   }
 
   togglePause() {
     if (this.isPaused) {
       this.unpause();
-    }
-    else {
+    } else {
       this.pause();
     }
   }
 
   pause() {
     super.pause();
+    this._updatePauseMenu();
     this._pauseScreen.style.display = 'block';
   }
 
   unpause() {
     super.unpause();
     this._pauseScreen.style.display = 'none';
+
+    if (this.isGameOver) {
+      this._restart();
+    }
+  }
+
+  _updatePauseMenu() {
+    const scoreField = document.querySelector('.pause-menu-score');
+    const runTimeField = document.querySelector('.pause-menu-total-run-time');
+    const scoreText = `${this.scoreCtrl.score} points`;
+    const runTimeText = millisecondsToString(animator.totalRunTime);
+    scoreField.innerHTML = scoreText;
+    runTimeField.innerHTML = runTimeText;
   }
 
   _setPauseKeyListeners() {
@@ -81,17 +100,8 @@ class SpaceDebrisController extends GameController {
   }
 
   _setElementListeners() {
-    this._playButton.addEventListener('click', () => this._onPlayClicked(), false);
+    this._playButton.addEventListener('click', () => this.unpause(), false);
     this._pauseScreen.addEventListener('click', event => this._onScreenClicked(event), false);
-  }
-
-  _onPlayClicked() {
-    if (this.isGameOver) {
-      // FIXME: Start new game
-    }
-    else {
-      this.unpause();
-    }
   }
 
   _onScreenClicked(event) {
@@ -99,6 +109,26 @@ class SpaceDebrisController extends GameController {
     if (event.target === this._pauseScreen && !this.isGameOver) {
       this.unpause();
     }
+  }
+
+  // TODO: Remove this. This is needed, because right now, `reset` won't return the app to its
+  //     starting state. Instead, we have to recreate everything.
+  _restart() {
+    window.location.reload(false);
+  }
+}
+
+function millisecondsToString(totalMilliseconds) {
+  const milliseconds = totalMilliseconds % 1000;
+  let tmp = (totalMilliseconds - milliseconds) / 1000;
+  const seconds = tmp % 60;
+  tmp = (tmp - seconds) / 60;
+  const minutes = tmp % 60;
+  const hours = (tmp - minutes) / 60;
+  return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}.${pad(milliseconds, 3)}`;
+
+  function pad(number, digits=2) {
+    return `00${number}`.slice(-digits);
   }
 }
 

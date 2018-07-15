@@ -18,6 +18,13 @@ class ScoreController {
   _updateScorePanel() {
     this._scorePanel.textContent = this._score;
   }
+
+  /**
+   * @returns {number}
+   */
+  get score() {
+    return this._score;
+  }
 }
 
 export { ScoreController };

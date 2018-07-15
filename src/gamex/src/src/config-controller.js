@@ -63,6 +63,13 @@ class ConfigController {
   }
 
   /**
+   * Clears the dat.GUI menu.
+   */
+  destroy() {
+    this._gui.destroy();
+  }
+
+  /**
    * @param {boolean} isGuiVisible
    * @private
    */

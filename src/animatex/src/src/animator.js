@@ -22,6 +22,8 @@ class Animator {
     this._previousTime = null;
     this._isPaused = true;
     this._requestAnimationFrameId = null;
+    this._totalUnpausedRunTime = 0;
+    this._lastUnpauseTime = null;
     this._latencyProfiler = new FrameLatencyProfiler(_FRAME_LATENCY_LOG_PERIOD,
         _FRAME_DURATION_WARNING_THRESHOLD, _LATENCY_LOG_LABEL);
   }
@@ -197,6 +199,9 @@ class Animator {
    * @private
    */
   _startAnimationLoop() {
+    if (this._isPaused) {
+      this._lastUnpauseTime = window.performance.now();
+    }
     this._isPaused = false;
 
     // Only actually start the loop if it isn't already running and the page has focus.
@@ -214,6 +219,9 @@ class Animator {
    * @private
    */
   _stopAnimationLoop() {
+    if (!this._isPaused) {
+      this._totalUnpausedRunTime += this._timeSinceLastPaused;
+    }
     this._isPaused = true;
     window.cancelAnimationFrame(this._requestAnimationFrameId);
     this._requestAnimationFrameId = null;
@@ -228,6 +236,24 @@ class Animator {
   resolveOnNextFrame() {
     return new Promise(window.requestAnimationFrame);
   }
+
+  /**
+   * Gets the total amount of time the animator has been running while not paused.
+   *
+   * @returns {DOMHighResTimeStamp}
+   */
+  get totalRunTime() {
+    return this._isPaused
+        ? this._totalUnpausedRunTime
+        : this._totalUnpausedRunTime + this._timeSinceLastPaused;
+  }
+
+  /**
+   * @returns {DOMHighResTimeStamp}
+   */
+  get _timeSinceLastPaused() {
+    return window.performance.now() - this._lastUnpauseTime;
+  }
 }
 
 const animator = new Animator();
@@ -238,3 +264,4 @@ export {animator};
  * @typedef {number} DOMHighResTimeStamp A number of milliseconds, accurate to one thousandth of a
  * millisecond.
  */
+
