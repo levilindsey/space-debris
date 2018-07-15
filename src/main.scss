@@ -305,11 +305,11 @@ $health-margin: ($hud-height - $health-height) / 2;
   left: 0;
   line-height: 28px;
   margin: 0 auto;
-  opacity: 1;
+  opacity: 0;
   padding: 20px 0;
   position: absolute;
   right: 0;
-  transition: 0.6s;
+  transition: 0.8s;
   width: 352px;
 
   div {

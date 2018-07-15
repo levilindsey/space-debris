@@ -45,13 +45,17 @@ class SpaceDebrisController extends GameController {
     this.scoreCtrl = new ScoreController(scorePanel);
 
     return super.initialize(canvas, programConfigs, texturePaths, SceneImpl)
-      .then(() => this._setPauseKeyListeners());
+      .then(() => {
+        this._setPauseKeyListeners();
+        this._setHideToastListeners();
+      });
   }
 
   run() {
     super.run();
     this.isGameOver = false;
     this._title.innerHTML = 'Paused';
+    this._toastPanel.style.opacity = '1';
   }
 
   endGame() {
@@ -107,6 +111,29 @@ class SpaceDebrisController extends GameController {
   _setPauseKeyListeners() {
     inputConfig.pauseKeys.forEach(key =>
       this._inputCtrl.addKeyDownListener(key, () => this.togglePause()));
+  }
+
+  /**
+   * Hide the toast overlay once the user is actually playing (after two key presses on relevant
+   * keys).
+   * @private
+   */
+  _setHideToastListeners() {
+    let gameKeyPressCount = 0;
+    const handleGameKeyPress = () => {
+      gameKeyPressCount++;
+      if (gameKeyPressCount >= 2) {
+        this._toastPanel.style.opacity = '0';
+
+        // Remove listeners.
+        inputConfig.allKeys.forEach(key =>
+            this._inputCtrl.removeKeyDownListener(key, handleGameKeyPress));
+      }
+    };
+
+    // Add listeners.
+    inputConfig.allKeys.forEach(key =>
+        this._inputCtrl.addKeyDownListener(key, handleGameKeyPress));
   }
 
   _setElementListeners() {

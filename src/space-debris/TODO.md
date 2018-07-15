@@ -17,19 +17,6 @@ FIXME: MAIN TODO LIST:
 
 
 
-- Add a menu UI
-  - Have three tabs
-    - Stats
-    - Controls
-    - Scoring
-
-
-
-- Until they have pressed the keys for forward thrust, shooting, and turning, show a hint message
-at the top of the screen that says "(Press SPACE to pause and see controls)".
-
-
-
 - Limit the area that we use the bloom shader on to only the region around the ship?
   - Also, only render the bloom shader when the ship's thrusters are on
 - Check performance at this point. Is any jank from needing a bvh? Or is it shader related?

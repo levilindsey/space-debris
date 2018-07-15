@@ -13,7 +13,17 @@ inputConfig.shipPitchThrusterUpKey = 'UP';
 inputConfig.shipPitchThrusterDownKey = 'DOWN';
 inputConfig.shipYawThrusterLeftKey = 'LEFT';
 inputConfig.shipYawThrusterRightKey = 'RIGHT';
-inputConfig.shipTorpedoKey = 'u';
 inputConfig.pauseKeys = ['SPACE', 'ESCAPE'];
+
+inputConfig.allKeys = [
+  inputConfig.shipShootTorpedoKey,
+  inputConfig.shipForwardThrusterKey,
+  inputConfig.shipStabilizerKey,
+  inputConfig.shipPitchThrusterUpKey,
+  inputConfig.shipPitchThrusterDownKey,
+  inputConfig.shipYawThrusterLeftKey,
+  inputConfig.shipYawThrusterRightKey,
+  ...inputConfig.pauseKeys,
+];
 
 export {inputConfig};
