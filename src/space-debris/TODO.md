@@ -71,11 +71,6 @@ FIXME: MAIN TODO LIST:
 
 
 
-- Asteroid bumpiness
-  - Add the logic for adding the randomized vertex deformations to the asteroid shapes.
-
-
-
 - Explosion animations
   - A new non-collidable, non-physics-based class that extends ModelController.
   - Add some super-simple explosion animation.
