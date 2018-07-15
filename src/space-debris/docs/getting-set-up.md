@@ -26,12 +26,6 @@ gem install compass
 npm install -g gulp
 ```
 
-### Install bower globally
-
-```bash
-npm install -g bower
-```
-
 ### Install babel globally
 
 ```bash

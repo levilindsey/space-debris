@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 const plugins = require('gulp-load-plugins')({lazy: false});
-import config from './config';
+import config from '../../../lsl-gulp-config';
 
 gulp.task('compress-images', () => {
   return gulp.src(config.imagesSrc)

@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import config from './config';
+import config from '../../../lsl-gulp-config';
 
 gulp.task('watch', config.buildTasks, () => {
   gulp.watch(config.scriptsSrc, ['scripts']);

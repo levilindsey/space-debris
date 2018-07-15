@@ -51,4 +51,3 @@ MIT
 [gulp]: http://gulpjs.com/
 [sass]: http://sass-lang.com/
 [npm]: http://npmjs.org/
-[bower]: http://bower.io/

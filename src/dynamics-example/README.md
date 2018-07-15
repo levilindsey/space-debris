@@ -1,6 +1,6 @@
 # dynamics-example
 
-#### A demo of [gamex][gamex]
+#### A dynamics simulation demo of [gamex][gamex].
 
 _See this running at [levi.codes/dynamics-example][demo]!_
 
@@ -39,8 +39,6 @@ The technologies used in this application include:
 - [lsl-gulp-tasks][lsl-gulp-tasks]
 - Numerous other packages that are available via [NPM][npm] (these are listed within the
   [`package.json`](./package.json) file)
-- Numerous other packages that are available via [Bower][bower] (these are listed within the
-  [`bower.json`](./bower.json) file)
 
 The metal textures were obtained from [http://webtreats.mysitemyway.com/][webtreats] and
 [premiumpixels.com][premiumpixels].
@@ -66,7 +64,6 @@ MIT
 [jasmine]: http://jasmine.github.io/
 [karma]: https://karma-runner.github.io/1.0/index.html
 [npm]: http://npmjs.org/
-[bower]: http://bower.io/
 
 [webtreats]: http://webtreats.mysitemyway.com/8-tileable-metal-textures/
 [premiumpixels]: http://www.premiumpixels.com/freebies/9-high-resolution-metal-surface-textures

@@ -4,7 +4,7 @@ import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 const plugins = require('gulp-load-plugins')({lazy: false});
-import config from './config';
+import config from '../../../lsl-gulp-config';
 
 gulp.task('scripts', () => {
   //return gulp.src(config.mainScriptSrc)
@@ -15,7 +15,7 @@ gulp.task('scripts', () => {
   //    .pipe(gulp.dest(config.scriptsDist));
 
   browserify({entries: config.mainScriptSrc, extensions: ['.js'], debug: true})
-    .transform(babelify, {presets: ['es2015']})
+    .transform(babelify, {presets: ['env']})
     .bundle()
       .on('error', error => { console.error(error); this.emit('end'); })
     .pipe(source(config.scriptDistFileName))

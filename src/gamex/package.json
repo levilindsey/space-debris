@@ -1,11 +1,11 @@
 {
-  "name": "space-debris",
+  "name": "gamex",
   "version": "0.0.0",
-  "description": "Fly through starscapes destroying space debris!",
+  "description": "A 3D WebGL-based game engine",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/levilindsey/space-debris"
+    "url": "http://github.com/levilindsey/gamex"
   },
   "author": {
     "name": "Levi Lindsey",
@@ -13,7 +13,7 @@
     "url": "https://github.com/levilindsey"
   },
   "bugs": {
-    "url": "http://github.com/levilindsey/space-debris/issues"
+    "url": "http://github.com/levilindsey/gamex/issues"
   },
   "dependencies": {},
   "devDependencies": {

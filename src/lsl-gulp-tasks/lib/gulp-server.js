@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 const plugins = require('gulp-load-plugins')({lazy: false});
-import gulpConfig from './config';
+import gulpConfig from '../../../lsl-gulp-config';
 
 // Useful for front-end-only projects
 gulp.task('server', ['watch'], () => {

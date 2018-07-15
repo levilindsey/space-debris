@@ -1,11 +1,11 @@
 {
-  "name": "space-debris",
+  "name": "animatex",
   "version": "0.0.0",
-  "description": "Fly through starscapes destroying space debris!",
+  "description": "A lightweight framework for custom animations",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/levilindsey/space-debris"
+    "url": "http://github.com/levilindsey/animatex"
   },
   "author": {
     "name": "Levi Lindsey",
@@ -13,7 +13,7 @@
     "url": "https://github.com/levilindsey"
   },
   "bugs": {
-    "url": "http://github.com/levilindsey/space-debris/issues"
+    "url": "http://github.com/levilindsey/animatex/issues"
   },
   "dependencies": {},
   "devDependencies": {

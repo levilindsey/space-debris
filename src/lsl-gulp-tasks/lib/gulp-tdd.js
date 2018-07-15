@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import config from './config';
+import config from '../../../lsl-gulp-config';
 import {Server} from 'karma';
 
 gulp.task('tdd', done => {

@@ -71,8 +71,6 @@ The technologies used in this library include:
 - [lsl-gulp-tasks][lsl-gulp-tasks]
 - Numerous other packages that are available via [NPM][npm] (these are listed within the
   [`package.json`](./package.json) file)
-- Numerous other packages that are available via [Bower][bower] (these are listed within the
-  [`bower.json`](./bower.json) file)
 
 Many online resources influenced the design of this library. Some of these include:
 
@@ -108,7 +106,6 @@ MIT
 [jasmine]: http://jasmine.github.io/
 [karma]: https://karma-runner.github.io/1.0/index.html
 [npm]: http://npmjs.org/
-[bower]: http://bower.io/
 
 [gafferongames]: http://gafferongames.com
 [geometrictools]: http://geometrictools.com

@@ -1,11 +1,11 @@
 {
-  "name": "space-debris",
+  "name": "physx",
   "version": "0.0.0",
-  "description": "Fly through starscapes destroying space debris!",
+  "description": "A physics engine with 3D rigid-body dynamics and collision detection (with impulse-based resolution)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/levilindsey/space-debris"
+    "url": "http://github.com/levilindsey/physx"
   },
   "author": {
     "name": "Levi Lindsey",
@@ -13,7 +13,7 @@
     "url": "https://github.com/levilindsey"
   },
   "bugs": {
-    "url": "http://github.com/levilindsey/space-debris/issues"
+    "url": "http://github.com/levilindsey/physx/issues"
   },
   "dependencies": {},
   "devDependencies": {

@@ -3,7 +3,7 @@
  */
 
 module.exports = karma => {
-  const gulpConfig = require('./lsl-gulp-config');
+  const gulpConfig = require('../../lsl-gulp-config');
 
   karma.set({
     frameworks: ['browserify', 'jasmine'],

@@ -39,8 +39,6 @@ The technologies used in this application include:
 - [lsl-gulp-tasks][lsl-gulp-tasks]
 - Numerous other packages that are available via [NPM][npm] (these are listed within the
   [`package.json`](./package.json) file)
-- Numerous other packages that are available via [Bower][bower] (these are listed within the
-  [`bower.json`](./bower.json) file)
 
 The asteroid textures used in this application were obtained from [jpl.nasa.gov][jpl], courtesy
 NASA/JPL-Caltech.
@@ -69,7 +67,6 @@ MIT
 [jasmine]: http://jasmine.github.io/
 [karma]: https://karma-runner.github.io/1.0/index.html
 [npm]: http://npmjs.org/
-[bower]: http://bower.io/
 
 [jpl]: http://www.jpl.nasa.gov/spaceimages/search_grid.php?sort=mission&q=voyager
 [webtreats]: http://webtreats.mysitemyway.com/8-tileable-metal-textures/

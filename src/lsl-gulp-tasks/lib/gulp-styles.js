@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 const plugins = require('gulp-load-plugins')({lazy: false});
-import config from './config';
+import config from '../../../lsl-gulp-config';
 
 gulp.task('styles', () => {
   return plugins.rubySass(config.stylesMainSrc, {style: 'expanded'})
@@ -10,7 +10,7 @@ gulp.task('styles', () => {
     .pipe(plugins.autoprefixer({browsers: ['last 2 versions']}))
     .pipe(gulp.dest(config.stylesDist))
     .pipe(plugins.rename({suffix: '.min'}))
-    .pipe(plugins.minifyCss())
+    .pipe(plugins.cleanCss())
     .pipe(gulp.dest(config.stylesDist));
 });
 
