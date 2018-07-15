@@ -8,6 +8,7 @@ class ScoreController {
     this._scorePanel = scorePanel;
     this._score = 0;
     this._updateScorePanel();
+    this._bestScore = window.localStorage.getItem('best-score') || 0;
   }
 
   onAsteroidShot() {
@@ -24,6 +25,28 @@ class ScoreController {
    */
   get score() {
     return this._score;
+  }
+
+  /**
+   * @returns {number}
+   */
+  get bestScore() {
+    return this._bestScore;
+  }
+
+  /**
+   * Updates the best score with the current score, if the current score is higher.
+   *
+   * @returns {boolean} True if the current score was higher.
+   */
+  updateBestScore() {
+    if (this._score > this._bestScore) {
+      this._bestScore = this._score;
+      window.localStorage.setItem('best-score', this._score);
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

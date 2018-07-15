@@ -2,46 +2,6 @@ FIXME: MAIN TODO LIST:
 
 
 
-- Fix ship-controller._applyWorldAngularAcceleration (or is it only when after colliding?)
-
-
-
-- Limit the area that we use the bloom shader on to only the region around the ship?
-  - Also, only render the bloom shader when the ship's thrusters are on
-- Check performance at this point. Is any jank from needing a bvh? Or is it shader related?
-
-
-
-- Update shaders
-  - Refactor original shader to support more things like texture blending, with color blending, with
-    (Blinn-Phong?) specularity/reflection, etc.
-  - Hook up dat.GUI menu items for switching shaders.
-    - Adding post-processing shaders.
-    - Switching primary shaders.
-    - Selectively changing for the different model controllers.
-
-
-
-- Go back through READMEs and document remaining details.
-
-- Separate out the sub-projects
-  - Create a different repo for each
-  - Create a new repo just for the gulp tasks that I use
-    - lsl-gulp-tasks
-    - Duplicate docs and top-level files in each repo
-    - Do not duplicate the gulp commands
-  - Create a different NPM package for each (and for the gulp commands)
-  - Update the import statements to use the globally-available import paths
-  - Update the package.json files and the gulpfile.babel.js files to reference the new gulp package
-    in node_modules/
-
-
-
-- Go through shaders and check if it makes much difference to use mediump instead of lowp and vice
-  versa.
-
-
-
 - Folder configs
   - MAKE SURE ALL ITEMS UPDATE IN REAL TIME (for both apps)
   - Make sure I have configs for all the things I care about:
@@ -78,23 +38,44 @@ FIXME: MAIN TODO LIST:
 
 
 
-- Add counts/statistics
-  - score
-    - more points for UFOs destroyed
-    - more points for hitting bigger asteroids
-    - more points for completely destroying all parts of an asteroids
-    - slight multiplier for lower health
-    - after each multiple of 10,000 points, get a health point back
-  - health
-    - get hit three times to explode
-  - overlay score and health displays at the top of the page
-    - health
-      - use a segmented progress indicator
-      - label: Ship status
-    - score
-      - label: Score
   - Until they have pressed the keys for forward thrust, shooting, and turning, show a hint message
     at the top of the screen that says "(Press SPACE to pause and see controls)".
+
+
+
+- Limit the area that we use the bloom shader on to only the region around the ship?
+  - Also, only render the bloom shader when the ship's thrusters are on
+- Check performance at this point. Is any jank from needing a bvh? Or is it shader related?
+
+
+
+- Update shaders
+  - Refactor original shader to support more things like texture blending, with color blending, with
+    (Blinn-Phong?) specularity/reflection, etc.
+  - Hook up dat.GUI menu items for switching shaders.
+    - Adding post-processing shaders.
+    - Switching primary shaders.
+    - Selectively changing for the different model controllers.
+
+
+
+- Go back through READMEs and document remaining details.
+
+- Separate out the sub-projects
+  - Create a different repo for each
+  - Create a new repo just for the gulp tasks that I use
+    - lsl-gulp-tasks
+    - Duplicate docs and top-level files in each repo
+    - Do not duplicate the gulp commands
+  - Create a different NPM package for each (and for the gulp commands)
+  - Update the import statements to use the globally-available import paths
+  - Update the package.json files and the gulpfile.babel.js files to reference the new gulp package
+    in node_modules/
+
+
+
+- Go through shaders and check if it makes much difference to use mediump instead of lowp and vice
+  versa.
 
 
 
@@ -178,9 +159,24 @@ FIXME: MAIN TODO LIST:
 
 
 
+- Add UFOs
+
+
+
 - Add support for HDR rendering.
   - Also, make sure bloom can yield colors other than just white after
     the additive blending.
+
+
+
+- Add counts/statistics
+  - score
+    - more points for UFOs destroyed
+    - more points for hitting bigger asteroids
+    - more points for completely destroying all parts of an asteroids
+    - slight multiplier for lower health
+    - slowly gain points as time passes simply for surviving 
+    - after each multiple of 10,000 points, get a health point back
 
 
 

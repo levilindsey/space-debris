@@ -193,15 +193,17 @@ body {
   }
 
   button.play {
-    flex: 0 0 auto;
     background-color: color(blue-2);
     border-radius: 3px;
     border: none;
     border-radius: 30px;
     color: color(white);
-    padding: 16px;
-    font-size: font-size(xl);
     cursor: pointer;
+    flex: 0 0 auto;
+    font-size: font-size(xl);
+    margin: 0 auto;
+    padding: 16px;
+    width: 180px;
   }
 }
 
@@ -253,6 +255,11 @@ $health-margin: ($hud-height - $health-height) / 2;
     border-color: transparent;
     background-color: $health-color;
   }
+}
+
+.new-record {
+  display: none;
+  margin: 40px;
 }
 
 .toast {

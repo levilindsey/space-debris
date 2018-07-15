@@ -19,6 +19,7 @@ class SpaceDebrisController extends GameController {
     this._pauseScreen = document.querySelector('.pause-screen');
     this._title = document.querySelector('.title');
     this._playButton = document.querySelector('button.play');
+    this._newRecordField = document.querySelector('.new-record');
     this._toastPanel = document.querySelector('.toast');
 
     this.healthCtrl = null;
@@ -56,10 +57,14 @@ class SpaceDebrisController extends GameController {
   endGame() {
     this._scene.destroyShip();
     this.isGameOver = true;
+    const isNewRecord = this.scoreCtrl.updateBestScore();
     this._updatePauseMenu();
+
     this._title.innerHTML = 'Game over';
     this._playButton.innerHTML = 'Play again';
     this._pauseScreen.style.display = 'block';
+
+    this._newRecordField.style.display = isNewRecord ? 'block' : 'none';
   }
 
   togglePause() {
@@ -87,10 +92,15 @@ class SpaceDebrisController extends GameController {
 
   _updatePauseMenu() {
     const scoreField = document.querySelector('.pause-menu-score');
+    const highestScoreField = document.querySelector('.pause-menu-highest-score');
     const runTimeField = document.querySelector('.pause-menu-total-run-time');
+
     const scoreText = `${this.scoreCtrl.score} points`;
+    const highestScoreText = `${this.scoreCtrl.bestScore} points`;
     const runTimeText = millisecondsToString(animator.totalRunTime);
+
     scoreField.innerHTML = scoreText;
+    highestScoreField.innerHTML = highestScoreText;
     runTimeField.innerHTML = runTimeText;
   }
 
