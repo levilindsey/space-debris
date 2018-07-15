@@ -4,7 +4,7 @@
 
 const sphereConfig = {};
 
-sphereConfig.sphericalSubdivisionCount = {
+sphereConfig.sphericalTesselationCount = {
   start: 8,
   min: 0,
   max: 20

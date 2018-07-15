@@ -26,7 +26,7 @@ class AsteroidController extends CollidablePhysicsModelController {
     const shapeParams = {
       shapeId: 'ASTEROID',
       collidableShapeId: 'SPHERE',
-      isUsingSphericalNormals: false,
+      isUsingSphericalNormals: true,
       divisionsCount: divisionsCount,
       scale: scale,
       isStationary: false,

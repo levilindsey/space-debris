@@ -27,11 +27,8 @@ asteroidsConfig.maxScale = 78;
 asteroidsConfig.minDivisionsCount = 2;
 asteroidsConfig.maxDivisionsCount = 5;
 
-asteroidsConfig.minVertexOrthogonalDeviation = 0;//-2;
-asteroidsConfig.maxVertexOrthogonalDeviation = 0;//2;
-
-asteroidsConfig.minVertexTangentialDeviation = 0;//-0.2;
-asteroidsConfig.maxVertexTangentialDeviation = 0;//0.2;
+asteroidsConfig.minVertexOrthogonalDeviation = -0.2;
+asteroidsConfig.maxVertexOrthogonalDeviation = 0.2;
 
 // Radians per millisecond.
 const _oneRevolutionPerSecond = Math.PI / 500;

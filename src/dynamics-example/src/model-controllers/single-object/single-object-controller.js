@@ -50,7 +50,7 @@ class SingleObjectController extends CollidablePhysicsModelController {
       shapeId: shapeId,
       collidableShapeId: collidableShapeId,
       isUsingSphericalNormals: generalConfig.useSmoothShading,
-      divisionsCount: config.sphericalSubdivisionCount,
+      divisionsCount: config.sphericalTesselationCount,
       capsuleEndPointsDistance: config.capsuleEndPointsDistance,
       radius: config.radius,
       scale: scale,

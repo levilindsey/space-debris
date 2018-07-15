@@ -589,8 +589,8 @@ function expandVertexIndicesAroundLongitudeSeam(oldVertexPositions, oldVertexInd
  * @param {Array.<Number>} [oldIndices]
  * @returns {{vertexPositions: Array.<Number>, vertexIndices: Array.<Number>}}
  */
-function subdivideSphere(divisionFactor, oldPositions, oldIndices) {
-  const newPositions = _expandAndSubdivideTriangles(divisionFactor, oldPositions, oldIndices);
+function tesselateSphere(divisionFactor, oldPositions, oldIndices) {
+  const newPositions = _expandAndTesselateTriangles(divisionFactor, oldPositions, oldIndices);
 
   // Convert the expanded positions array into a unique positions array with a corresponding indices
   // array.
@@ -614,7 +614,7 @@ function subdivideSphere(divisionFactor, oldPositions, oldIndices) {
  * @returns {Array.<Number>}
  * @private
  */
-function _expandAndSubdivideTriangles(divisionFactor, oldPositions, oldIndices) {
+function _expandAndTesselateTriangles(divisionFactor, oldPositions, oldIndices) {
   const expandedOldPositions = oldIndices
       ? expandVertexIndicesToDuplicatePositions(oldPositions, oldIndices)
       : oldPositions;
@@ -640,7 +640,7 @@ function _expandAndSubdivideTriangles(divisionFactor, oldPositions, oldIndices) 
   let columnIndex;
 
   //
-  // The basic subdivision algorithm:
+  // The basic tesselation algorithm:
   // - Iterate across the original triangles that we are sub-dividing.
   // - A, B, and C are the vertices of the current, original triangle.
   // - Consider "rows" to iterate across the a-to-b direction and "columns" to iterate across the
@@ -824,7 +824,12 @@ function dedupVertexArrayWithPositionsAndIndicesArrays(oldVertexPositions) {
   };
 }
 
-const _VERTEX_COORDINATE_BUCKET_SIZE_DIGITS = 7;
+const _VERTEX_COORDINATE_BUCKET_SIZE_DIGITS = 4;
+
+// This offset is important for preventing bucket-aligned numbers from being placed in inconsistent
+// buckets. For example, whole integer values could easily be placed in lower or higher buckets
+// depending on round-off error.
+const _OFFSET = Math.random();
 
 /**
  * Calculates a hash code for the given vertex.
@@ -838,9 +843,9 @@ const _VERTEX_COORDINATE_BUCKET_SIZE_DIGITS = 7;
  * @private
  */
 function _vertexHashFunction(vertex) {
-  return `${vertex[0].toFixed(_VERTEX_COORDINATE_BUCKET_SIZE_DIGITS)},` +
-      `${vertex[1].toFixed(_VERTEX_COORDINATE_BUCKET_SIZE_DIGITS)},` +
-      `${vertex[2].toFixed(_VERTEX_COORDINATE_BUCKET_SIZE_DIGITS)}`;
+  return `${(vertex[0] + _OFFSET).toFixed(_VERTEX_COORDINATE_BUCKET_SIZE_DIGITS)},` +
+      `${(vertex[1] + _OFFSET).toFixed(_VERTEX_COORDINATE_BUCKET_SIZE_DIGITS)},` +
+      `${(vertex[2] + _OFFSET).toFixed(_VERTEX_COORDINATE_BUCKET_SIZE_DIGITS)}`;
 }
 
 /**
@@ -1083,7 +1088,7 @@ export {
   calculateLatLongTextureCoordinates,
   calculateCylindricalTextureCoordinates,
   expandVertexIndicesAroundLongitudeSeam,
-  subdivideSphere,
+  tesselateSphere,
   dedupVertexArrayWithPositionsAndIndicesArrays,
   calculateSphericalSection,
   calculateCylindricalSection,

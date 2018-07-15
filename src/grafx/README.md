@@ -23,9 +23,8 @@ TODO: Add some sort of getting set up and understanding the code docs.
 - A collection of basic shape definitions, each with vertex position, normal, texture coordinate,
   and vertex indices configurations.
 - Algorithms for converting to and from a vertex indexing array.
-- An algorithm for polygon subdivision.
-  - This is used for [tesselating][tesselation] all faces of a polygon into a parameterized number
-    of triangles.
+- An algorithm for polygon [tesselation][tesselation].
+  - This is used for subdividing all faces of a polygon into a parameterized number of triangles.
   - All of the resulting vertices can then be pushed out to a given radius in order to render a
     smoother sphere.
 - An algorithm for mapping spherical lat-long textures onto an icosahedron.

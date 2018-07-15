@@ -65,10 +65,56 @@ function vec3ToString(v) {
  * @returns {vec3}
  */
 function createRandomVec3(scale = 1) {
-  const v = vec3.fromValues(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5);
+  const v = vec3.create();
+  return setRandomVec3(v, scale);
+}
+
+/**
+ * TODO: This finds a random point with uniform probability within a cubic area, which biases the resulting vector toward the corners of this cubic area. Re-write this to produce an unbiased vector.
+ *
+ * @param {vec3} v
+ * @param {number} [scale=1]
+ * @returns {vec3}
+ */
+function setRandomVec3(v, scale = 1) {
+  vec3.set(v, Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5);
   vec3.normalize(v, v);
   vec3.scale(v, v, scale);
   return v;
+}
+
+/**
+ * Calculates a vector that is orthogonal to the given vector.
+ *
+ * TODO: This finds a random point with uniform probability within a cubic area, which biases the resulting vector toward the corners of this cubic area. Re-write this to produce an unbiased vector.
+ *
+ * @param {vec3} basis
+ * @param {number} [scale=1]
+ * @returns {vec3}
+ */
+function createRandomOrthogonalVec3(basis, scale = 1) {
+  const result = vec3.create();
+  return setRandomOrthogonalVec3(result, basis, scale);
+}
+
+/**
+ * Calculates a vector that is orthogonal to the given vector.
+ *
+ * TODO: This finds a random point with uniform probability within a cubic area, which biases the resulting vector toward the corners of this cubic area. Re-write this to produce an unbiased vector.
+ *
+ * @param {vec3} result
+ * @param {vec3} basis
+ * @param {number} [scale=1]
+ * @returns {vec3}
+ */
+function setRandomOrthogonalVec3(result, basis, scale = 1) {
+  setRandomVec3(result);
+  // This is based on the dot and cross products and the fact that the dot product for two
+  // orthogonal vectors is zero.
+  result[2] = -(basis[0] * result[0] + basis[1] * result[1]) / basis[2];
+  vec3.normalize(result, result);
+  vec3.scale(result, result, scale);
+  return result;
 }
 
 /**
@@ -147,6 +193,9 @@ export {
   areVec3sEqual,
   vec3ToString,
   createRandomVec3,
+  setRandomVec3,
+  createRandomOrthogonalVec3,
+  setRandomOrthogonalVec3,
   randomVec3InRange,
   addRandomRotationToVector,
   scaleAndAddQuat,

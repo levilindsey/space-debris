@@ -15,7 +15,7 @@ import {
   calculateOrthogonalVertexNormals,
   expandVertexIndicesAroundLongitudeSeam,
   expandVertexIndicesToDuplicatePositions,
-  subdivideSphere,
+  tesselateSphere,
 } from '../../../util';
 import {getCacheKey} from '../renderable-shape-store';
 import {renderableShapeFactory} from '../renderable-shape-factory';
@@ -35,7 +35,7 @@ const icosphereRenderableShapeFactory = {
     const baseRenderableShape = renderableShapeFactory.getRenderableShape(copyParams);
 
     // Calculate the positions and indices.
-    let {vertexPositions, vertexIndices} = subdivideSphere(params.divisionsCount,
+    let {vertexPositions, vertexIndices} = tesselateSphere(params.divisionsCount,
         baseRenderableShape.vertexPositions, baseRenderableShape.vertexIndices);
     ({vertexPositions, vertexIndices} = expandVertexIndicesAroundLongitudeSeam(
         vertexPositions, vertexIndices));

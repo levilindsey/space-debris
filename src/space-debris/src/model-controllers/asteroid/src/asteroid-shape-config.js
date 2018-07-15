@@ -7,7 +7,6 @@
  */
 
 import {
-  createRandomVec3,
   deepCopy,
   getCacheKey,
   randomFloatInRange,
@@ -27,16 +26,13 @@ const asteroidRenderableShapeFactory = {
     copyParams.shapeId = 'ICOSPHERE';
     const icosphereRenderableShape = renderableShapeFactory.getRenderableShape(copyParams);
 
-    const vertexPositions = icosphereRenderableShape.vertexPositions;
-    //_addRandomOffsetsToPositions(vertexPositions); // TODO: ADD BACK IN
+    // Copy the normals array, because it may have been referencing the same instance as the
+    // positions array, which we're about to modify.
+    icosphereRenderableShape.vertexNormals = [...icosphereRenderableShape.vertexNormals];
 
-    return {
-      vertexPositions: vertexPositions,
-      vertexNormals: icosphereRenderableShape.vertexNormals,
-      textureCoordinates: icosphereRenderableShape.textureCoordinates,
-      vertexIndices: icosphereRenderableShape.vertexIndices,
-      elementCount: icosphereRenderableShape.elementCount,
-    };
+    _addRandomOffsetsToPositions(icosphereRenderableShape.vertexPositions);
+
+    return icosphereRenderableShape;
   },
 
   /**
@@ -49,7 +45,7 @@ const asteroidRenderableShapeFactory = {
 };
 
 /**
- * Adds a random orthogonal and tangential offset to each of the given positions.
+ * Adds a random orthogonal offset to each of the given positions.
  *
  * @param {Array.<Number>} vertexPositions
  * @private
@@ -61,8 +57,6 @@ function _addRandomOffsetsToPositions(vertexPositions) {
   let i;
   let count;
   let orthogonalOffset;
-  let tangentialOffset;
-  let tangentialOffsetVector;
 
   for (i = 0, count = vertexPositions.length; i < count; i += 3) {
     vec3.set(vertexPosition, vertexPositions[i], vertexPositions[i + 1], vertexPositions[i + 2]);
@@ -70,17 +64,10 @@ function _addRandomOffsetsToPositions(vertexPositions) {
     // Orthogonal offset.
     orthogonalOffset = randomFloatInRange(asteroidsConfig.minVertexOrthogonalDeviation,
         asteroidsConfig.maxVertexOrthogonalDeviation);
-    vec3.copy(orthogonalOffsetVector, vertexPositions);
-    vec3.scale(orthogonalOffset, orthogonalOffset, orthogonalOffset);
+    vec3.copy(orthogonalOffsetVector, vertexPosition);
+    vec3.scale(orthogonalOffsetVector, orthogonalOffsetVector, orthogonalOffset);
 
-    // Tangential offset (also contributes slightly to the orthogonal offset).
-    tangentialOffset = randomFloatInRange(asteroidsConfig.minVertexTangentialDeviation,
-        asteroidsConfig.maxVertexTangentialDeviation);
-    tangentialOffsetVector = createRandomVec3();
-    vec3.scale(tangentialOffsetVector, tangentialOffsetVector, tangentialOffset);
-
-    vec3.add(vertexPosition, vertexPosition, orthogonalOffset);
-    vec3.add(vertexPosition, vertexPosition, tangentialOffset);
+    vec3.add(vertexPosition, vertexPosition, orthogonalOffsetVector);
 
     vertexPositions[i] = vertexPosition[0];
     vertexPositions[i + 1] = vertexPosition[1];
