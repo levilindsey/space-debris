@@ -18,19 +18,6 @@ FIXME: MAIN TODO LIST:
 
 
 - Add a menu UI
-  - Overlays center of page; has a black transparent screen over the rest of the page.
-  - DON'T show on initial page load; just skip straight to playing.
-  - Do show when pausing; add support for pausing (spacebar and escape?).
-  - Do show after dying.
-  - Show stats for playing
-    - for current game and total cumulative plays (use local storage)
-    - score
-    - duration
-    - # of asteroids destroyed
-    - # of UFOs destroyed
-    - Bullets fired
-    - Damage taken
-  - Change title depending on why the menu is shown: GAME OVER or PAUSED
   - Have three tabs
     - Stats
     - Controls
@@ -38,8 +25,8 @@ FIXME: MAIN TODO LIST:
 
 
 
-  - Until they have pressed the keys for forward thrust, shooting, and turning, show a hint message
-    at the top of the screen that says "(Press SPACE to pause and see controls)".
+- Until they have pressed the keys for forward thrust, shooting, and turning, show a hint message
+at the top of the screen that says "(Press SPACE to pause and see controls)".
 
 
 
@@ -170,6 +157,12 @@ FIXME: MAIN TODO LIST:
 
 
 - Add counts/statistics
+  - Show stats for playing
+    - for current game and total cumulative plays (use local storage)
+    - # of asteroids destroyed
+    - # of UFOs destroyed
+    - Bullets fired
+    - Damage taken
   - score
     - more points for UFOs destroyed
     - more points for hitting bigger asteroids
