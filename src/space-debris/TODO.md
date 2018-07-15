@@ -2,20 +2,6 @@ FIXME: MAIN TODO LIST:
 
 
 
-- Handle start of new game
-
-
-
-- Decouple ModelController and Physics
- - Have SceneImpl worry about pulling out the specific sub-instances (of model controllers and physics controllers) and registering them in the
-   right places.
-  - Fix how PhysicsModelController:
-    - has a lot of messy getter/method wrappers from ModelController
-    - isn't a good proxy for ModelController
-    - doesn't handle the group scenario well
-
-
-
 - Fix ship-controller._applyWorldAngularAcceleration (or is it only when after colliding?)
 
 

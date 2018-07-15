@@ -10,6 +10,7 @@ import {
  * This should be extended by all components that handle models--i.e., anything that will be
  * rendering shapes.
  *
+ * @implements {ModelControllerInterface}
  * @abstract
  */
 class ModelController extends PersistentAnimationJob {
@@ -39,6 +40,7 @@ class ModelController extends PersistentAnimationJob {
     this._drawFrameHandler = () => this.draw();
     this._programVariablesConfig = null;
 
+    this.position = vec3.create();
     this.scale = vec3.fromValues(1, 1, 1);
 
     this._setUpTexture(params.texturePath);
@@ -200,6 +202,16 @@ class ModelController extends PersistentAnimationJob {
 }
 
 export {ModelController};
+
+/**
+ * @typedef {Object} ModelControllerInterface
+ * @property {Function.<Promise>} getIsReady
+ * @property {Function} reset
+ * @property {Function} destroy
+ * @property {mat4} localTransform
+ * @property {mat4} worldTransform
+ * @property {vec3} position
+ */
 
 /**
  * @typedef {Object} ModelControllerConfig

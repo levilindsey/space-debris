@@ -7,6 +7,7 @@ import {PhysicsJob, PhysicsState} from '../../../physx';
  * It uses composition to control an instance of a ModelController along with a corresponding
  * instance of a PhysicsJob.
  *
+ * @implements {ModelControllerInterface}
  * @abstract
  */
 class PhysicsModelController {

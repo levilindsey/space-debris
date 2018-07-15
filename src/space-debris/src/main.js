@@ -40,5 +40,10 @@ function _initApp() {
   ];
   const textures = [];
   controller.initialize(canvas, programConfigs, textures, SceneImpl)
-    .then(() => controller.run());
+    .then(() => {
+      const body = document.querySelector('body');
+      body.style.visibility = 'visible';
+
+      controller.run();
+    });
 }

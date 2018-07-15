@@ -5,6 +5,7 @@ import { PersistentAnimationJob } from '../../../../animatex';
  *
  * This is useful for higher-level controllers that control other models and also transform them.
  *
+ * @implements {ModelControllerInterface}
  * @abstract
  */
 class ModelGroupController extends PersistentAnimationJob {
@@ -99,8 +100,8 @@ class ModelGroupController extends PersistentAnimationJob {
   }
 
   /**
-   * @param {ModelController} modelCtrl
-   * @returns {Promise.<ModelController>}
+   * @param {ModelControllerInterface} modelCtrl
+   * @returns {Promise.<ModelControllerInterface>}
    * @protected
    */
   _startModelController(modelCtrl) {
@@ -112,7 +113,7 @@ class ModelGroupController extends PersistentAnimationJob {
   }
 
   /**
-   * @param {ModelController} modelCtrl
+   * @param {ModelControllerInterface} modelCtrl
    * @protected
    */
   _onModelControllerDestroyed(modelCtrl) {
