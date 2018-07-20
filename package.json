@@ -1,7 +1,7 @@
 {
   "name": "space-debris",
-  "version": "0.0.0",
-  "description": "Fly through starscapes destroying space debris!",
+  "version": "0.1.0",
+  "description": "This is a WebGL-based space-flight simulation video game",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -15,8 +15,7 @@
   "bugs": {
     "url": "http://github.com/levilindsey/space-debris/issues"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babelify": "^8.0.0",
@@ -24,6 +23,7 @@
     "connect-livereload": "^0.6.0",
     "dat.gui": "^0.7.2",
     "del": "^3.0.0",
+    "gamex": "^0.5.0",
     "gl-matrix": "^2.7.0",
     "glob": "^7.1.2",
     "gulp": "^3.9.1",
@@ -57,6 +57,7 @@
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.11.0"
   },
+  "devDependencies": {},
   "engines": {
     "node": ">=8.11.3"
   },

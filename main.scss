@@ -1,0 +1,332 @@
+// --- Shared values --- //
+$colors: ( black: #000000,
+white: #FFFFFF,
+
+grey-0: #111,
+grey-1: #212121, // 87% opacity of black on white
+grey-2: #727272, // 54% opacity of black on white
+grey-3: #b8b8b8, // 26% opacity of black on white
+grey-4: #dadada, // 12% opacity of black on white
+grey-5: #f9f9f9,
+
+blue-1: hsla(227, 36%, 22%, 1),
+blue-2: #2299EE,
+blue-3: #77CCFF,
+blue-4: hsla(227, 36%, 80%, 1),
+
+yellow-1: hsla(53, 36%, 22%, 1),
+yellow-2: #D6AF00,
+yellow-3: #FFE675,
+yellow-4: hsla(53, 36%, 80%, 1),
+
+green-1: hsla(128, 36%, 22%, 1),
+green-4: hsla(128, 36%, 80%, 1),
+
+red-1: hsla(4, 36%, 22%, 1),
+red-4: hsla(4, 36%, 80%, 1));
+
+$font-sizes: ( xs: 12px,
+s: 14px,
+m: 16px,
+l: 18px,
+xl: 22px,
+xxl: 32px,
+);
+
+//@font-face {
+//  font-family: font-name;
+//  src: url('../fonts/**');// TODO: add custom font
+//}
+@mixin helvetica-stack() {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-weight: 300;
+}
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@function font-size($size-name) {
+  @return map-get($font-sizes, $size-name);
+}
+
+ul,
+ol,
+dl,
+dd,
+dt,
+li,
+div,
+html,
+body,
+p,
+form,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+img,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#game-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+  width: 100%;
+}
+
+html {
+  font-size: font-size(m);
+  line-height: font-size(m);
+}
+
+body {
+  @include helvetica-stack();
+
+  color: color(grey-5);
+  background-color: color(grey-0);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-align: center; //  font-family: ...;
+}
+
+a {
+  //  color: color(...);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:visited {
+  //  color: color(...);
+}
+
+a:hover {
+  //  color: color(...);
+  text-decoration: underline;
+}
+
+a:active {
+  //  color: color(...);
+}
+
+// -------------------------------------------------------------------------- //
+$min-menu-margin: 20px;
+
+body {
+  /* Don't show anything until the controller is ready. */
+  visibility: hidden;
+}
+
+.overlays,
+.pause-menu,
+.pause-screen {
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.pause-menu {
+  align-items: stretch;
+  background-color: color(grey-1);
+  border: 2px solid color(grey-4);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  font-size: 28px;
+  height: 700px;
+  line-height: 28px;
+  max-height: calc(100% - #{$min-menu-margin});
+  max-width: calc(100% - #{$min-menu-margin});
+  padding: 32px;
+  width: 600px;
+
+  .title {
+    flex: 0 0 auto;
+  }
+
+  .pause-menu-content {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: center;
+
+    dl>div {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+
+      dt,
+      dd {
+        margin: 0 20px;
+        max-width: 200px;
+        width: 50%;
+      }
+
+      dt {
+        text-align: end;
+      }
+
+      dd {
+        text-align: start;
+      }
+    }
+
+    .stats {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pause-menu-controls {
+      flex: 0;
+      font-size: .7em;
+      margin-bottom: 28px;
+
+      hr {
+        margin: 20px;
+      }
+
+      h3 {
+        font-size: .9em;
+        margin-bottom: 8px;
+      }
+
+      dl>div {
+        margin: 2px 0;
+
+        dt,
+        dd {
+          margin: 0 8px;
+        }
+      }
+    }
+  }
+
+  button.play {
+    background-color: color(blue-2);
+    border-radius: 3px;
+    border: none;
+    border-radius: 30px;
+    color: color(white);
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-size: font-size(xl);
+    margin: 0 auto;
+    padding: 16px;
+    width: 180px;
+  }
+}
+
+.pause-screen {
+  display: none;
+  background-color: hsla(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+}
+
+$hud-margin: 32px;
+$hud-height: 48px;
+$hud-item-width: 180px;
+$health-color: hsla(119, 94%, 50%, 0.8);
+
+.score {
+  bottom: $hud-margin;
+  font-size: font-size(xxl);
+  height: $hud-height;
+  line-height: $hud-height;
+  position: absolute;
+  right: $hud-margin;
+  text-align: right;
+  width: $hud-item-width;
+}
+
+$health-height: 32px;
+$health-margin: ($hud-height - $health-height) / 2;
+
+.health {
+  bottom: $hud-margin;
+  height: $hud-height;
+  left: $hud-margin;
+  position: absolute;
+  width: $hud-item-width;
+
+  .capacity,
+  .current {
+    border: 2px solid color(white);
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: $health-height;
+    position: absolute;
+    top: $health-margin;
+    width: $hud-item-width;
+  }
+
+  .current {
+    border-color: transparent;
+    background-color: $health-color;
+  }
+}
+
+.new-record {
+  display: none;
+  margin: 40px;
+}
+
+.toast {
+  align-items: stretch;
+  background-color: hsla(0, 0, 0, 0.2);
+  border-radius: 4px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  font-size: 28px;
+  left: 0;
+  line-height: 28px;
+  margin: 0 auto;
+  opacity: 0;
+  padding: 20px 0;
+  position: absolute;
+  right: 0;
+  transition: 0.8s;
+  width: 352px;
+
+  div {
+    display: flex;
+
+    dt,
+    dd {
+      margin: 2px 20px;
+      width: 50%;
+    }
+
+    dt {
+      text-align: end;
+    }
+
+    dd {
+      text-align: start;
+    }
+  }
+}
