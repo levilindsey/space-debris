@@ -11,20 +11,7 @@
 
 
 
-- Finish docs:
-  - Rename dynamics-example repo.
-
-
-
-- Fix whatever sometimes prevents the ship from taking damage when colliding.
-
-- Remove shape caching for asteroids (check performance; add back in?)
-
-- Children asteroids
-  - Add a new field for which tier the asteroid is (3, 2, 1).
-  - Add different size/shape/#-of-sub-shapes-to-create configurations for each tier.
-  - Add logic for creating (or not) children asteroids.
-  - Add placeholder logic for triggering asteroid explosions.
+- Make torpedo bigger and brighter
 
 
 
@@ -39,6 +26,18 @@
 
 
 --------
+
+
+
+- Fix whatever sometimes prevents the ship from taking damage when colliding.
+
+- Remove shape caching for asteroids (check performance; add back in?)
+
+- Children asteroids
+  - Add a new field for which tier the asteroid is (3, 2, 1).
+  - Add different size/shape/#-of-sub-shapes-to-create configurations for each tier.
+  - Add logic for creating (or not) children asteroids.
+  - Add placeholder logic for triggering asteroid explosions.
 
 
 
