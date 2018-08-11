@@ -1,4 +1,4 @@
-FIXME: MAIN TODO LIST:
+# MAIN TODO LIST:
 
 
 
@@ -6,8 +6,19 @@ FIXME: MAIN TODO LIST:
   - MAKE SURE ALL ITEMS UPDATE IN REAL TIME (for both apps)
   - Make sure I have configs for all the things I care about:
     - camera, light, shader, texture
+  - Add support for saving all configs to local storage
+    - Also add a reset button?
 
 
+
+- Finish docs:
+  - Rename dynamics-example repo.
+
+
+
+- Fix whatever sometimes prevents the ship from taking damage when colliding.
+
+- Remove shape caching for asteroids (check performance; add back in?)
 
 - Children asteroids
   - Add a new field for which tier the asteroid is (3, 2, 1).
@@ -17,11 +28,23 @@ FIXME: MAIN TODO LIST:
 
 
 
+- Deploy to website
+  - Capture screenshots, minify, upload to AWS
+  - Deploy dynamics
+  - Deploy space debris
+  - Update profile posts (and latest Google/personal info; link to YouTube playlist)
+  - Fix Heroku thing...
+  - Fix hex grid on linux Chrome
+
+
+
+--------
+
+
+
 - Limit the area that we use the bloom shader on to only the region around the ship?
   - Also, only render the bloom shader when the ship's thrusters are on
 - Check performance at this point. Is any jank from needing a bvh? Or is it shader related?
-
-
 
 - Update shaders
   - Refactor original shader to support more things like texture blending, with color blending, with
@@ -31,25 +54,12 @@ FIXME: MAIN TODO LIST:
     - Switching primary shaders.
     - Selectively changing for the different model controllers.
 
-
-
-- Go back through READMEs and document remaining details.
-
-- Separate out the sub-projects
-  - Create a different repo for each
-  - Create a new repo just for the gulp tasks that I use
-    - lsl-gulp-tasks
-    - Duplicate docs and top-level files in each repo
-    - Do not duplicate the gulp commands
-  - Create a different NPM package for each (and for the gulp commands)
-  - Update the import statements to use the globally-available import paths
-  - Update the package.json files and the gulpfile.babel.js files to reference the new gulp package
-    in node_modules/
-
-
-
 - Go through shaders and check if it makes much difference to use mediump instead of lowp and vice
   versa.
+
+- Add support for HDR rendering.
+  - Also, make sure bloom can yield colors other than just white after
+    the additive blending.
 
 
 
@@ -63,10 +73,16 @@ FIXME: MAIN TODO LIST:
 
 
 
+- Starting zoom animation
+  - Initial post-load animation to zoom the ship into place (with the screensaver effect).
+
+
+
 - Ship thruster animations
   - Add engine acceleration effect (blurry triangle firing outward from ship; could be 2D?)
   - Add a torpedo blasting away effect (blurry circle at the front of the ship (rendered underneath
     the ship?))
+    - Make the torpedoes a little bigger and brighter?
   - Add logic to fade-in/grow-in the thruster shape when it turns on
 
 
@@ -95,11 +111,6 @@ FIXME: MAIN TODO LIST:
 
 
 
-- Starting zoom animation
-  - Initial post-load animation to zoom the ship into place (with the screensaver effect).
-
-
-
 - Add sound effects.
   - Look up what the current browser support is and what the current library to use is.
   - Add some ambient music/noise?
@@ -123,21 +134,6 @@ FIXME: MAIN TODO LIST:
 
 
 
-- When to show/hide dat.GUI menu? Change wording from "Open Controls" to "Adjust parameters"?
-- Slide a panel explaining controls onto the screen after 0.5 seconds of inactivity.
-
-
-
-- Add UFOs
-
-
-
-- Add support for HDR rendering.
-  - Also, make sure bloom can yield colors other than just white after
-    the additive blending.
-
-
-
 - Add counts/statistics
   - Show stats for playing
     - for current game and total cumulative plays (use local storage)
@@ -152,6 +148,10 @@ FIXME: MAIN TODO LIST:
     - slight multiplier for lower health
     - slowly gain points as time passes simply for surviving 
     - after each multiple of 10,000 points, get a health point back
+
+
+
+- Add UFOs
 
 
 

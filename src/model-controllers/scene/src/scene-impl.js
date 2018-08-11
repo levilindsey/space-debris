@@ -10,11 +10,8 @@ import {
   cameraFolderConfig,
   cameraTypeMap,
   firstPersonCameraConfig,
-  firstPersonCameraFolderConfig,
   fixedCameraConfig,
-  fixedCameraFolderConfig,
   followCameraConfig,
-  followCameraFolderConfig,
   physicsFolderConfig,
 }
 from '../../../config';
@@ -249,12 +246,15 @@ class SceneImpl extends GameScene {
     // });
     configController.createFolder(starsFolderConfig);
     configController.createFolder(physicsFolderConfig);
+
+    const setCameraPerspective =
+        () => this._camera._setPerspective(cameraConfig.fovY, cameraConfig.defaultAspectRatio,
+            cameraConfig._zNear, cameraConfig._zFar);
     configController.createFolder(cameraFolderConfig, null, {
+      'fovY': setCameraPerspective,
+      'defaultAspectRatio': setCameraPerspective,
       'cameraType': () => this._createCamera(),
     });
-    configController.createFolder(followCameraFolderConfig, null, {});
-    configController.createFolder(firstPersonCameraFolderConfig, null, {});
-    configController.createFolder(fixedCameraFolderConfig, null, {});
   }
 
   _updateAsteroidsTexture() {

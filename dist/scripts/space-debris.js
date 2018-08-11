@@ -16020,10 +16020,18 @@ var cameraConfig = {}; /**
 
 // TODO: Tie this into the folder-config system.
 
-cameraConfig.fovY = (0, _gamex.degToRad)(70.0);
-cameraConfig.zNear = 0.1;
-cameraConfig.zFar = 4000;
-cameraConfig.defaultAspectRatio = 16 / 9;
+cameraConfig.fovY = {
+  start: (0, _gamex.degToRad)(70.0),
+  min: 0.0,
+  max: 3.1415
+};
+cameraConfig.defaultAspectRatio = {
+  start: 16 / 9,
+  min: 0.01,
+  max: 8.0
+};
+cameraConfig._zNear = 0.1;
+cameraConfig._zFar = 4000;
 cameraConfig._defaultLookAtDirection = vec3.fromValues(0, 0, -1);
 cameraConfig.cameraType = {
   start: 'thirdPersonSpring',
@@ -16154,7 +16162,8 @@ var followCameraFolderConfig = {
 var cameraFolderConfig = {
   label: 'Camera',
   config: _cameraConfig.cameraConfig,
-  isOpen: true
+  isOpen: false,
+  childFolders: [followCameraFolderConfig, firstPersonCameraFolderConfig, fixedCameraFolderConfig]
 };
 
 exports.cameraFolderConfig = cameraFolderConfig;
@@ -16230,12 +16239,12 @@ physicsConfig.angularDragCoefficient = {
 };
 physicsConfig.coefficientOfRestitution = {
   start: 0.8,
-  min: 0.0,
+  min: 0.0001,
   max: 1.0
 };
 physicsConfig.coefficientOfFriction = {
   start: 0.03,
-  min: 0.0,
+  min: 0.0001,
   max: 1.0
 };
 physicsConfig.lowMomentumSuppressionThreshold = {
@@ -18070,9 +18079,9 @@ var sceneConfig = {};
 sceneConfig.chunkSideLength = 700;
 sceneConfig.chunkCountOnASide = 8;
 
-// Keep this value correlated with cameraConfig.zFar and star-shader.MAX_DISTANCE_FROM_CAMERA.
+// Keep this value correlated with cameraConfig._zFar and star-shader.MAX_DISTANCE_FROM_CAMERA.
 sceneConfig.renderDistance = sceneConfig.chunkSideLength * (sceneConfig.chunkCountOnASide - 1) / 2;
-_config.cameraConfig.zFar = sceneConfig.renderDistance;
+_config.cameraConfig._zFar = sceneConfig.renderDistance;
 
 exports.sceneConfig = sceneConfig;
 
@@ -18389,14 +18398,17 @@ var SceneImpl = function (_GameScene) {
       // });
       _gamex.configController.createFolder(_star.starsFolderConfig);
       _gamex.configController.createFolder(_config.physicsFolderConfig);
+
+      var setCameraPerspective = function setCameraPerspective() {
+        return _this6._camera._setPerspective(_config.cameraConfig.fovY, _config.cameraConfig.defaultAspectRatio, _config.cameraConfig._zNear, _config.cameraConfig._zFar);
+      };
       _gamex.configController.createFolder(_config.cameraFolderConfig, null, {
+        'fovY': setCameraPerspective,
+        'defaultAspectRatio': setCameraPerspective,
         'cameraType': function cameraType() {
           return _this6._createCamera();
         }
       });
-      _gamex.configController.createFolder(_config.followCameraFolderConfig, null, {});
-      _gamex.configController.createFolder(_config.firstPersonCameraFolderConfig, null, {});
-      _gamex.configController.createFolder(_config.fixedCameraFolderConfig, null, {});
     }
   }, {
     key: '_updateAsteroidsTexture',

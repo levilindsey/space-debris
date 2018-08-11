@@ -10,8 +10,8 @@ const sceneConfig = {};
 sceneConfig.chunkSideLength = 700;
 sceneConfig.chunkCountOnASide = 8;
 
-// Keep this value correlated with cameraConfig.zFar and star-shader.MAX_DISTANCE_FROM_CAMERA.
+// Keep this value correlated with cameraConfig._zFar and star-shader.MAX_DISTANCE_FROM_CAMERA.
 sceneConfig.renderDistance = sceneConfig.chunkSideLength * (sceneConfig.chunkCountOnASide - 1) / 2;
-cameraConfig.zFar = sceneConfig.renderDistance;
+cameraConfig._zFar = sceneConfig.renderDistance;
 
 export {sceneConfig};

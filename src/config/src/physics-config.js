@@ -22,12 +22,12 @@ physicsConfig.angularDragCoefficient = {
 };
 physicsConfig.coefficientOfRestitution = {
   start: 0.8,
-  min: 0.0,
+  min: 0.0001,
   max: 1.0
 };
 physicsConfig.coefficientOfFriction = {
   start: 0.03,
-  min: 0.0,
+  min: 0.0001,
   max: 1.0
 };
 physicsConfig.lowMomentumSuppressionThreshold = {

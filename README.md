@@ -8,8 +8,6 @@ This is a WebGL-based space-flight simulation video game.
 
 To learn about the 3D WebGL-based game engine this is built on, checkout [gamex][gamex].
 
-TODO: Add some sort of getting set up and understanding the code docs.
-
 ## Notable Features
 
 - An algorithm for calculating intercept velocity of B given the position and velocity of A and the
@@ -36,7 +34,6 @@ The technologies used in this application include:
 - [Browserify][browserify]
 - [SASS][sass]
 - [gamex][gamex]
-- [lsl-gulp-tasks][lsl-gulp-tasks]
 - Numerous other packages that are available via [NPM][npm] (these are listed within the
   [`package.json`](./package.json) file)
 
@@ -45,6 +42,11 @@ NASA/JPL-Caltech.
 
 The ship textures were obtained from [http://webtreats.mysitemyway.com/][webtreats] and
 [premiumpixels.com][premiumpixels].
+
+## Developing / Running the Code
+
+See [Getting Set Up](./docs/getting-set-up) or [Understanding the
+Code](./docs/understanding-the-code) for more info.
 
 ## License
 
@@ -55,7 +57,6 @@ MIT
 [gamex]: https://github.com/levilindsey/gamex
 [grafx]: https://github.com/levilindsey/grafx
 [physx]: https://github.com/levilindsey/physx
-[lsl-gulp-tasks]: https://github.com/levilindsey/lsl-gulp-tasks
 
 [es2015]: http://www.ecma-international.org/ecma-262/6.0/
 [webgl]: https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API

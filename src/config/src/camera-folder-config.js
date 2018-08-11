@@ -42,7 +42,12 @@ const followCameraFolderConfig = {
 const cameraFolderConfig = {
   label: 'Camera',
   config: cameraConfig,
-  isOpen: true
+  isOpen: false,
+  childFolders: [
+    followCameraFolderConfig,
+    firstPersonCameraFolderConfig,
+    fixedCameraFolderConfig
+  ]
 };
 
 export {cameraFolderConfig, firstPersonCameraFolderConfig, fixedCameraFolderConfig, followCameraFolderConfig};

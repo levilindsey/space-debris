@@ -15,10 +15,18 @@ import {
 
 const cameraConfig = {};
 
-cameraConfig.fovY = degToRad(70.0);
-cameraConfig.zNear = 0.1;
-cameraConfig.zFar = 4000;
-cameraConfig.defaultAspectRatio = 16 / 9;
+cameraConfig.fovY = {
+  start: degToRad(70.0),
+  min: 0.0,
+  max: 3.1415
+};
+cameraConfig.defaultAspectRatio = {
+  start: 16 / 9,
+  min: 0.01,
+  max: 8.0
+};
+cameraConfig._zNear = 0.1;
+cameraConfig._zFar = 4000;
 cameraConfig._defaultLookAtDirection = vec3.fromValues(0, 0, -1);
 cameraConfig.cameraType = {
   start: 'thirdPersonSpring',

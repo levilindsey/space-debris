@@ -12,7 +12,7 @@ uniform lowp mat4 uMVMatrix;
 
 varying lowp vec3 vColor;
 
-// Keep this value correlated with sceneConfig.renderDistance and cameraConfig.zFar. This should be
+// Keep this value correlated with sceneConfig.renderDistance and cameraConfig._zFar. This should be
 // just greater than them.
 const lowp float MAX_DISTANCE_FROM_CAMERA = 2451.0;
 
