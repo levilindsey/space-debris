@@ -1,6 +1,6 @@
 {
   "name": "space-debris",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "This is a WebGL-based space-flight simulation video game",
   "license": "MIT",
   "repository": {
