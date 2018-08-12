@@ -9,7 +9,7 @@ torpedoesConfig.shaderProgram = 'flat-color-program';
 torpedoesConfig.mass = 10;
 
 torpedoesConfig.alpha = {
-  start: 0.5,
+  start: 0.9,
   min: 0,
   max: 1,
 };

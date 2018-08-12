@@ -78,14 +78,14 @@ shipConfig.torpedoSpeed = {
   max: 3.0,
 };
 shipConfig.torpedoLength = {
-  start: 4.0,
+  start: 6.0,
   min: 0.01,
-  max: 1.0,
+  max: 30.0,
 };
 shipConfig.torpedoWidth = {
-  start: 0.4,
+  start: 0.8,
   min: 0.01,
-  max: 1.0,
+  max: 5.0,
 };
 shipConfig.torpedoColor = {
   h: 0.29,

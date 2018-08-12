@@ -240,7 +240,7 @@ class SceneImpl extends GameScene {
       'texturePath': () => this._updateShipTexture(),
       'shaderProgram': () => this._updateShipProgramWrapper(),
     });
-    // configController.createFolder(ufosFolderConfig, null, {
+    // configController.createFolder(ufosFolderConfig, null,
     //   'texturePath': () => this._updateUfosTexture(),
     //   'shaderProgram': () => this._updateUfosProgramWrapper(),
     // });

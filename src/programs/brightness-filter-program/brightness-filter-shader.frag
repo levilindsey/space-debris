@@ -11,7 +11,7 @@ void main(void)
   lowp vec4 texelColor = texture2D(uSampler, vTextureCoord);
   lowp float brightness = dot(texelColor.rgb, vec3(0.325, 0.45, 0.225));
   // Only render the fragments that are bright enough.
-  // FIXME: Adjust this.
+  // TODO: Adjust this.
   if (brightness > 0.8) {
     gl_FragColor = texelColor;
   }

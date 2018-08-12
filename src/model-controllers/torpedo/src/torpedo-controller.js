@@ -76,8 +76,8 @@ function _createShapeParams(torpedoParams) {
     shapeId: 'CAPSULE',
     collidableShapeId: 'CAPSULE',
     isStationary: false,
-    isUsingSphericalNormals: true,
-    divisionsCount: 4,// FIXME: Check this
+    isUsingSphericalNormals: false,
+    divisionsCount: 4,
     capsuleEndPointsDistance: torpedoParams.length - torpedoParams.width,
     radius: torpedoParams.width / 2,
     scale: vec3.fromValues(1, 1, 1),

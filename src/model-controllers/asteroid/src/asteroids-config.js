@@ -13,7 +13,7 @@ asteroidsConfig._initialAsteroidMaxDistanceFromShip = 400;
 asteroidsConfig.minDistanceFromShip = 150;
 asteroidsConfig.maxDistanceFromShip = 460;
 
-// FIXME: Add params back, and check all these
+// TODO: Add params back, and check all these
 
 // Scene coordinates per millisecond.
 asteroidsConfig._initialMinSpeed = 0.1;

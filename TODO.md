@@ -11,24 +11,6 @@
 
 
 
-- Make torpedo bigger and brighter
-
-
-
-- Deploy to website
-  - Capture screenshots, minify, upload to AWS
-  - Deploy dynamics
-  - Deploy space debris
-  - Update profile posts (and latest Google/personal info; link to YouTube playlist)
-  - Fix Heroku thing...
-  - Fix hex grid on linux Chrome
-
-
-
---------
-
-
-
 - Fix whatever sometimes prevents the ship from taking damage when colliding.
 
 - Remove shape caching for asteroids (check performance; add back in?)

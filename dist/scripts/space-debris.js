@@ -17490,7 +17490,7 @@ asteroidsConfig._initialAsteroidMaxDistanceFromShip = 400;
 asteroidsConfig.minDistanceFromShip = 150;
 asteroidsConfig.maxDistanceFromShip = 460;
 
-// FIXME: Add params back, and check all these
+// TODO: Add params back, and check all these
 
 // Scene coordinates per millisecond.
 asteroidsConfig._initialMinSpeed = 0.1;
@@ -18392,7 +18392,7 @@ var SceneImpl = function (_GameScene) {
           return _this6._updateShipProgramWrapper();
         }
       });
-      // configController.createFolder(ufosFolderConfig, null, {
+      // configController.createFolder(ufosFolderConfig, null,
       //   'texturePath': () => this._updateUfosTexture(),
       //   'shaderProgram': () => this._updateUfosProgramWrapper(),
       // });
@@ -18674,14 +18674,14 @@ shipConfig.torpedoSpeed = {
   max: 3.0
 };
 shipConfig.torpedoLength = {
-  start: 4.0,
+  start: 6.0,
   min: 0.01,
-  max: 1.0
+  max: 30.0
 };
 shipConfig.torpedoWidth = {
-  start: 0.4,
+  start: 0.8,
   min: 0.01,
-  max: 1.0
+  max: 5.0
 };
 shipConfig.torpedoColor = {
   h: 0.29,
@@ -20235,8 +20235,8 @@ function _createShapeParams(torpedoParams) {
     shapeId: 'CAPSULE',
     collidableShapeId: 'CAPSULE',
     isStationary: false,
-    isUsingSphericalNormals: true,
-    divisionsCount: 4, // FIXME: Check this
+    isUsingSphericalNormals: false,
+    divisionsCount: 4,
     capsuleEndPointsDistance: torpedoParams.length - torpedoParams.width,
     radius: torpedoParams.width / 2,
     scale: vec3.fromValues(1, 1, 1)
@@ -20289,7 +20289,7 @@ torpedoesConfig.shaderProgram = 'flat-color-program';
 torpedoesConfig.mass = 10;
 
 torpedoesConfig.alpha = {
-  start: 0.5,
+  start: 0.9,
   min: 0,
   max: 1
 };
