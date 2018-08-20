@@ -4,11 +4,14 @@
 
 const inputConfig = {};
 
-// TODO: Change these to not be Dvorak-based.
+// TODO: Remove these Dvorak-based alternatives.
+// inputConfig.shipShootTorpedoKey = 'u';
+// inputConfig.shipForwardThrusterKey = 'e';
+// inputConfig.shipStabilizerKey = 'o';
 
-inputConfig.shipShootTorpedoKey = 'u';
-inputConfig.shipForwardThrusterKey = 'e';
-inputConfig.shipStabilizerKey = 'o';
+inputConfig.shipShootTorpedoKey = 's';
+inputConfig.shipForwardThrusterKey = 'd';
+inputConfig.shipStabilizerKey = 'f';
 inputConfig.shipPitchThrusterUpKey = 'UP';
 inputConfig.shipPitchThrusterDownKey = 'DOWN';
 inputConfig.shipYawThrusterLeftKey = 'LEFT';
