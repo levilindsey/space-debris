@@ -33,7 +33,8 @@ function _initApp() {
 
   const canvas = document.getElementById('game-area');
   const programConfigs = [
-    bloomProgramWrapperConfig,
+    // TODO: Add bloom back in once it's more performant.
+    // bloomProgramWrapperConfig,
     flatColorProgramWrapperConfig,
     generalModelProgramWrapperConfig,
     starPointsProgramWrapperConfig,
