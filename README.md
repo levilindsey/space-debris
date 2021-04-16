@@ -2,7 +2,7 @@
 
 #### Fly through starscapes destroying space debris!
 
-_See this running at [levi.codes/space-debris][demo]!_
+_See this running at [levi.dev/space-debris][demo]!_
 
 This is a WebGL-based space-flight simulation video game. 
 
